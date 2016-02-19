@@ -1,3 +1,8 @@
+$PROJDIR/[Ll]ibrary/
+$PROJDIR/[Tt]emp/
+$PROJDIR/[Oo]bj/
+$PROJDIR/[Bb]uild/
+$PROJDIR/[Bb]uilds/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
