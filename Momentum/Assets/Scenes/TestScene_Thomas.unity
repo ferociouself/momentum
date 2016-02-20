@@ -96,6 +96,7 @@ GameObject:
   - 212: {fileID: 76204692}
   - 50: {fileID: 76204691}
   - 58: {fileID: 76204690}
+  - 96: {fileID: 76204694}
   m_Layer: 0
   m_Name: CircleRed
   m_TagString: Untagged
@@ -176,6 +177,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!96 &76204694
+TrailRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76204689}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cca5c4d1cbde9054f86d2e3265b9b34a, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 2
+  m_StartWidth: 0.5
+  m_EndWidth: 0
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4288143784
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4292855256
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4290539636
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4291989945
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 4288073933
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
 --- !u!1 &185761975
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +284,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
