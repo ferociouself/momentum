@@ -2,14 +2,14 @@
 # =============== #
 # Unity generated #
 # =============== #
-Momentum/[Tt]emp/
-Momentum/[Oo]bj/
-Momentum/[Bb]uild
-Momentum/[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-[Ll]ibrary/
+Momentum/Temp/
+Momentum/Obj/
+Momentum/Build
+Momentum/Library/
+Temp/
+Obj/
+Build
+Library/
 sysinfo.txt
 *.stackdump
  
