@@ -15,6 +15,9 @@ public class EditModeScript : MonoBehaviour {
     public float exitEditModeTime = 0.15f; // Time it takes to unpause
     public float editModeTimeScale = 0.0f; // Timescale in edit mode
 
+    public float editModeInactiveTrailAlpha = 0; // Alpha of trails when not in edit mode
+    public float editModeActiveTrailAlpha = 1; // Alpha of trails in edit mode
+
     private float transitionTimer = 0.0f;
     private EditModeState editModeState; // Current status of edit mode
 
@@ -49,49 +52,13 @@ public class EditModeScript : MonoBehaviour {
 
     // FixedUpdate is called at regular time intervals
     void UpdateTransitions() {
-        // Debug.Log("State: " + enterEditModeTime + " Transition Time: " + transitionTimer);
+        // If in transitioning state - lerp to desired state.
         if(editModeState == EditModeState.Entering)
         {
-            float timerVal;
-            if (enterEditModeTime == 0)
-            {
-                timerVal = 1;
-            }
-            else
-            {
-                timerVal = transitionTimer / enterEditModeTime;
-            }
-            Time.timeScale = Mathf.Lerp(1, editModeTimeScale, timerVal);
-            if(transitionTimer >= enterEditModeTime)
-            {
-                Time.timeScale = editModeTimeScale;
-                editModeState = EditModeState.Active;
-                transitionTimer = 0;
-            }
-            else
-            {
-                transitionTimer += MyTime.deltaTime;
-            }
-        }
-        else if (editModeState == EditModeState.Exiting)
+            LerpToMode(EditModeState.Active);
+        } else if(editModeState == EditModeState.Exiting)
         {
-            float timerVal;
-            if(exitEditModeTime == 0) {
-                timerVal = 1;
-            } else {
-                timerVal = transitionTimer / exitEditModeTime;
-            }
-            Time.timeScale = Mathf.Lerp(editModeTimeScale, 1, timerVal);
-            if (transitionTimer >= exitEditModeTime)
-            {
-                Time.timeScale = 1;
-                editModeState = EditModeState.Inactive;
-                transitionTimer = 0;
-            }
-            else
-            {
-                transitionTimer += MyTime.deltaTime;
-            }
+            LerpToMode(EditModeState.Inactive);
         }
     }
 
@@ -110,5 +77,63 @@ public class EditModeScript : MonoBehaviour {
             transitionTimer = 0;
         }
         editModeState = (toEdit ? EditModeState.Entering : EditModeState.Exiting);
+    }
+
+    /// <summary>
+    /// Linear Interpolation Between Edit Modes
+    /// </summary>
+    /// <param name="initial">Initial Value</param>
+    /// <param name="final">Final Value</param>
+    /// <param name="totalTime">Time for Interpolation</param>
+    /// <param name="destState">Edit Mode State to Enter when Complete</param>
+    void LerpToMode(EditModeState destState)
+    {
+        if(destState != EditModeState.Active && destState != EditModeState.Inactive) {
+            Debug.LogError("Error: Calling LerpMode with invalid destination state (" + destState + "). Must call with Active or Inactive.");
+            return;
+        }
+
+        bool entering = destState == EditModeState.Active;
+        float totalTime = (entering ? enterEditModeTime : exitEditModeTime);
+
+        float timeScaleInit = (entering ? 1 : editModeTimeScale);
+        float timeScaleFinal = (entering ? editModeTimeScale : 1);
+
+        float alphaInit = (entering ? editModeInactiveTrailAlpha : editModeActiveTrailAlpha);
+        float alphaFinal = (entering ? editModeActiveTrailAlpha : editModeInactiveTrailAlpha);
+
+        float timerVal = (totalTime == 0 ? 1 : transitionTimer / totalTime);
+
+        // Alpha
+        SetTrailAlphas(Mathf.Lerp(alphaInit, alphaFinal, timerVal));
+
+        // Time Scale
+        Time.timeScale = Mathf.Lerp(timeScaleInit, timeScaleFinal, timerVal);
+
+        // Clamping to Final States
+        if (transitionTimer >= totalTime)
+        {
+            Time.timeScale = timeScaleFinal;
+            SetTrailAlphas(alphaFinal);
+            editModeState = destState;
+            transitionTimer = 0;
+        }
+        else
+        {
+            transitionTimer += MyTime.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// Set all trail renderer alphas to the given alpha value
+    /// </summary>
+    /// <param name="alpha">Alpha value between 0 and 1</param>
+    void SetTrailAlphas(float alpha) {
+        if (alpha < 0) alpha = 0;
+        if (alpha > 1) alpha = 1;
+
+        foreach(TrailRenderer renderer in FindObjectsOfType<TrailRenderer>()) {
+            renderer.material.color = new Color(1, 1, 1, alpha);
+        }
     }
 }
