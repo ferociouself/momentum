@@ -44,10 +44,41 @@ public class EditModeScript : MonoBehaviour {
             // Switch to edit mode if current mode is inactive or leaving.
             // Switch away from edit mode if current mode is active or entering.
             //
-            bool toEditMode = (editModeState == EditModeState.Exiting || editModeState == EditModeState.Inactive);
-            BeginEditModeTransition(toEditMode);
+            ToggleEditMode();
         }
         UpdateTransitions();
+    }
+
+    /// <summary>
+    /// If edit mode is active, set to inactive.
+    /// If edit mode is inactive, set to active.
+    /// </summary>
+    public void ToggleEditMode() {
+        bool toEditMode = (editModeState == EditModeState.Exiting || editModeState == EditModeState.Inactive);
+        BeginEditModeTransition(toEditMode);
+    }
+    
+    /// <summary>
+    /// Exit Edit Mode
+    /// </summary>
+    public void ExitEditMode() {
+        if(editModeState == EditModeState.Exiting || editModeState == EditModeState.Inactive) {
+            return; // Editmode is already inactive (or moving to inactive).
+        }
+
+        BeginEditModeTransition(false);
+    }
+
+    /// <summary>
+    /// Enter Edit Mode
+    /// </summary>
+    public void EnterEditMode() {
+        if (editModeState == EditModeState.Entering || editModeState == EditModeState.Active)
+        {
+            return; // Editmode is already active (or moving to active).
+        }
+
+        BeginEditModeTransition(true);
     }
 
     // FixedUpdate is called at regular time intervals

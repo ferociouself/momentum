@@ -8,6 +8,7 @@ public class MomentumTransferController : MonoBehaviour
     public GameObject destTargetIndicatorTemplate; // Template for the object to indicate the selected destination target.
     public bool allowTransfersInEditMode = false; // Only allow momentum transfer in edit mode?
     public bool allowMomentumToSelfTransfer = false; // Allow an object to transfer momentum to itself.
+    public bool unpauseOnTransfer = true; // Unpause when momentum is transferred.
 
     private GameObject sourceTarget; // Source target (null if none).
     private GameObject destTarget; // Destination target (null if none).
@@ -36,7 +37,8 @@ public class MomentumTransferController : MonoBehaviour
         }
 
         // Clear targets on ClearTargets button.
-        if(Input.GetButtonUp("ClearTargets")) {
+        if (Input.GetButtonUp("ClearTargets"))
+        {
             ClearTargets();
         }
 
@@ -66,15 +68,32 @@ public class MomentumTransferController : MonoBehaviour
             return;
         }
 
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(mousePos.x, mousePos.y), Vector2.zero, 0f);
+        GameObject clickedObj = (hit.collider == null ? null : hit.collider.gameObject);
+
+        // Have source and dest, handle momentum transfer.
         if (sourceTarget != null && destTarget != null)
         {
-            TransferMomentum(sourceTarget, destTarget, GetMomentumTransferAngle());
-            ClearTargets();
+            if (clickedObj != null && hit.collider.gameObject == destTarget)
+            {
+                // Clicked an object with source and dest selected.
+                // If clicked dest, clear target. Otherwise behave normally.
+                ClearDest();
+            }
+            else {
+                TransferMomentum(sourceTarget, destTarget, GetMomentumTransferAngle());
+                ClearTargets();
+                if (unpauseOnTransfer && editModeControllerScript != null)
+                {
+                    editModeControllerScript.ExitEditMode();
+                }
+            }
         }
-        else {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(mousePos.x, mousePos.y), Vector2.zero, 0f);
-            if (hit.collider != null)
+        else
+        {
+            if (clickedObj)
             {
                 HandleMouseClickOnObject(hit.collider.gameObject);
             }
@@ -135,7 +154,15 @@ public class MomentumTransferController : MonoBehaviour
             SetSource(obj);
         }
         else {
-            SetDest(obj);
+            if (!allowMomentumToSelfTransfer && sourceTarget != null && obj == sourceTarget)
+            {
+                // If clicked on source (and not allowed to transfer momentum to self), clear source.
+                ClearSource();
+            }
+            else
+            {
+                SetDest(obj);
+            }
         }
     }
 
@@ -146,12 +173,6 @@ public class MomentumTransferController : MonoBehaviour
     {
         // Make sure object has a momentum container.
         if (obj.GetComponent<MomentumContainer>() == null)
-        {
-            return false;
-        }
-
-        // Check self transfer
-        if (!allowMomentumToSelfTransfer && sourceTarget != null && obj == sourceTarget)
         {
             return false;
         }
