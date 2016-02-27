@@ -4,13 +4,13 @@ using System.Collections;
 public class ScaleToObject : MonoBehaviour
 {
 
-    public GameObject target; // The object whose size to imitate.
+    public GameObject initialTarget; // The initial target object (null if none).
     public float sizeRatio = 1.0f; // Desired fraction of other objects size.
 
-    private SpriteRenderer mySpriteRenderer;
-    private SpriteRenderer targetSpriteRenderer;
-
-    private float origWidth, origHeight, origDepth;
+    private GameObject currentTagret; // The current target object (null if none).
+    private SpriteRenderer mySpriteRenderer; // My Sprite Renderer.
+    private SpriteRenderer targetSpriteRenderer; // Sprite Renderer of target.
+    private float origWidth, origHeight, origDepth; // Original dimensions of this object.
 
     /// <summary>
     ///  Use this for initialization
@@ -27,14 +27,28 @@ public class ScaleToObject : MonoBehaviour
             origDepth = 1;
         }
         else {
-            origWidth = mySpriteRenderer.bounds.size.x;
-            origHeight = mySpriteRenderer.bounds.size.y;
-            origDepth = mySpriteRenderer.bounds.size.z;
+            origWidth = mySpriteRenderer.bounds.size.x / mySpriteRenderer.transform.lossyScale.x;
+            origHeight = mySpriteRenderer.bounds.size.y / mySpriteRenderer.transform.lossyScale.y;
+            origDepth = mySpriteRenderer.bounds.size.z / mySpriteRenderer.transform.lossyScale.z;
         }
 
-        if (target != null)
+        if (initialTarget != null)
         {
-            targetSpriteRenderer = target.GetComponent<SpriteRenderer>();
+            SetTarget(initialTarget);
+        }
+    }
+
+    /// <summary>
+    /// Set the object whose size this object should imitate.
+    /// Null clears target.
+    /// </summary>
+    public void SetTarget(GameObject obj) {
+        currentTagret = obj;
+        if (currentTagret != null)
+        {
+            targetSpriteRenderer = currentTagret.GetComponent<SpriteRenderer>();
+        } else {
+            targetSpriteRenderer = null;
         }
     }
 
@@ -43,16 +57,16 @@ public class ScaleToObject : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (target != null && targetSpriteRenderer == null)
+        if (currentTagret != null && targetSpriteRenderer == null)
         {
-            targetSpriteRenderer = target.GetComponent<SpriteRenderer>();
+            targetSpriteRenderer = currentTagret.GetComponent<SpriteRenderer>();
         }
-        else if (target == null && targetSpriteRenderer != null)
+        else if (currentTagret == null && targetSpriteRenderer != null)
         {
             targetSpriteRenderer = null;
         }
 
-        if (target != null)
+        if (targetSpriteRenderer != null)
         {
             var targetBounds = targetSpriteRenderer.bounds;
 
