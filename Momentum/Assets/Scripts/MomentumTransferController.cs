@@ -6,7 +6,7 @@ public class MomentumTransferController : MonoBehaviour
 
     public GameObject sourceTargetIndicatorTemplate; // Template for the object to indicate the selected source target.
     public GameObject destTargetIndicatorTemplate; // Template for the object to indicate the selected destination target.
-    public bool onlyAllowTransfersInEditMode = true; // Only allow momentum transfer in edit mode?
+    public bool allowTransfersInEditMode = false; // Only allow momentum transfer in edit mode?
     public bool allowMomentumToSelfTransfer = false; // Allow an object to transfer momentum to itself.
 
     private GameObject sourceTarget; // Source target (null if none).
@@ -20,7 +20,7 @@ public class MomentumTransferController : MonoBehaviour
     void Start()
     {
         editModeControllerScript = FindObjectOfType<EditModeScript>();
-        if (editModeControllerScript == null && onlyAllowTransfersInEditMode)
+        if (editModeControllerScript == null && !allowTransfersInEditMode)
         {
             Debug.LogError("The Momentum Transfer Controller is set to only allow transfers in edit mode, but it cannot find edit mode controller script.");
         }
@@ -29,9 +29,29 @@ public class MomentumTransferController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check for mouse clicks.
         if (Input.GetMouseButtonUp(0))
         {
             HandleMouseClick();
+        }
+
+        // Clear targets on ClearTargets button.
+        if(Input.GetButtonUp("ClearTargets")) {
+            ClearTargets();
+        }
+
+        // Clear targets on non-eidt mode
+        // If momentum transfers are not allowed in edit mode.
+        if (!allowTransfersInEditMode && editModeControllerScript != null && !editModeControllerScript.EditModeActive())
+        {
+            if (destTarget != null)
+            {
+                ClearDest();
+            }
+            if (sourceTarget != null)
+            {
+                ClearSource();
+            }
         }
     }
 
@@ -41,7 +61,7 @@ public class MomentumTransferController : MonoBehaviour
     private void HandleMouseClick()
     {
         // Check Edit Mode
-        if (onlyAllowTransfersInEditMode && editModeControllerScript != null && !editModeControllerScript.EditModeActive())
+        if (!allowTransfersInEditMode && editModeControllerScript != null && !editModeControllerScript.EditModeActive())
         {
             return;
         }
@@ -77,7 +97,8 @@ public class MomentumTransferController : MonoBehaviour
         }
 
         MomentumContainer srcMomentumContainer = source.GetComponent<MomentumContainer>();
-        if(srcMomentumContainer == null) {
+        if (srcMomentumContainer == null)
+        {
             Debug.LogError("Transfer momentum source must have a momentum container component.");
             return;
         }
@@ -85,14 +106,16 @@ public class MomentumTransferController : MonoBehaviour
         float momentum = srcMomentumContainer.GetMomentum();
         srcMomentumContainer.ZeroMomentum();
 
-        if(dest != null) {
+        if (dest != null)
+        {
             // Transfer to destination.
             MomentumContainer destMomentumContainer = dest.GetComponent<MomentumContainer>();
-            if(destMomentumContainer == null) {
+            if (destMomentumContainer == null)
+            {
                 Debug.LogWarning("Tranfer Momentum Destination has no momentum container. Cannot tranfer momentum to an object without momentum container.");
                 return;
             }
-            
+
             destMomentumContainer.AddMomentum(momentum, angle);
         }
     }
@@ -122,7 +145,8 @@ public class MomentumTransferController : MonoBehaviour
     private bool ValidMomentumObject(GameObject obj)
     {
         // Make sure object has a momentum container.
-        if (obj.GetComponent<MomentumContainer>() == null) {
+        if (obj.GetComponent<MomentumContainer>() == null)
+        {
             return false;
         }
 
@@ -234,7 +258,8 @@ public class MomentumTransferController : MonoBehaviour
         }
 
         LookAtMouse lookAtMouseScript = destTargetIndicator.GetComponent<LookAtMouse>();
-        if(lookAtMouseScript == null) {
+        if (lookAtMouseScript == null)
+        {
             return 0.0f; // Destination target indicator is missing the component required for getting the angle.
         }
 
