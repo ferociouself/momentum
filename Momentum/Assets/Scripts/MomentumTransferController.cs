@@ -6,17 +6,23 @@ public class MomentumTransferController : MonoBehaviour
 
     public GameObject sourceTargetIndicatorTemplate; // Template for the object to indicate the selected source target.
     public GameObject destTargetIndicatorTemplate; // Template for the object to indicate the selected destination target.
+    public bool onlyAllowTransfersInEditMode = true; // Only allow momentum transfer in edit mode?
 
     private GameObject sourceTarget; // Source target (null if none).
     private GameObject destTarget; // Destination target (null if none).
 
+    private EditModeScript editModeControllerScript; // Used to determine if in edit mode.
     private GameObject sourceTargetIndicator; // Actual source target indicator (null if no source selected).
     private GameObject destTargetIndicator; // Actual destination target indicator (null if no destination selected).
 
     // Use this for initialization
     void Start()
     {
-
+        editModeControllerScript = FindObjectOfType<EditModeScript>();
+        if (editModeControllerScript == null && onlyAllowTransfersInEditMode)
+        {
+            Debug.LogError("The Momentum Transfer Controller is set to only allow transfers in edit mode, but it cannot find edit mode controller script.");
+        }
     }
 
     // Update is called once per frame
@@ -31,17 +37,66 @@ public class MomentumTransferController : MonoBehaviour
     /// <summary>
     /// Handle a mouse click event.
     /// </summary>
-    private void HandleMouseClick() {
+    private void HandleMouseClick()
+    {
+        // Check Edit Mode
+        if (onlyAllowTransfersInEditMode && editModeControllerScript != null && !editModeControllerScript.EditModeActive())
+        {
+            return;
+        }
+
         if (sourceTarget != null && destTarget != null)
         {
+            TransferMomentum(sourceTarget, destTarget, GetMomentumTransferAngle());
             ClearTargets();
-        } else {
+        }
+        else {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(mousePos.x, mousePos.y), Vector2.zero, 0f);
             if (hit.collider != null)
             {
                 HandleMouseClickOnObject(hit.collider.gameObject);
             }
+        }
+    }
+
+    /// <summary>
+    /// Transfer the momentum from the source target to the destination target at the given angle
+    /// Dest null will clear momentum from source.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="dest"></param>
+    public void TransferMomentum(GameObject source, GameObject dest, float angle)
+    {
+        // Check valid parameters.
+        if (source == null)
+        {
+            Debug.LogError("Cannot transfer momentum from null source.");
+            return;
+        }
+
+        Rigidbody2D sourceRB = source.GetComponent<Rigidbody2D>();
+        if(sourceRB == null) {
+            Debug.LogError("Transfer momentum source must have a rigid body 2d component.");
+            return;
+        }
+
+        float momentum = sourceRB.mass * sourceRB.velocity.magnitude; // Momentum = mass*velocity
+        sourceRB.velocity = Vector2.zero; // Clear source destination velocity.
+        sourceRB.angularVelocity = 0.0f; // Clear source angular velocity.
+
+        if(dest != null) {
+            // Transfer to destination.
+            Rigidbody2D destRB = dest.GetComponent<Rigidbody2D>();
+            if(destRB == null) {
+                Debug.LogWarning("Tranfer Momentum Destination Has no RigidBody2D. Cannot tranfer momentum to an object with no RigidBody2D.");
+                return;
+            }
+
+            float addVelocityMagnitude = momentum / destRB.mass;
+            float angleInRad = angle * Mathf.Deg2Rad;
+            Vector2 newMomentum = new Vector2(addVelocityMagnitude * Mathf.Cos(angleInRad), addVelocityMagnitude * Mathf.Sin(angleInRad));
+            destRB.velocity += newMomentum;
         }
     }
 
@@ -157,5 +212,24 @@ public class MomentumTransferController : MonoBehaviour
             destTargetIndicator = null;
         }
         destTarget = null;
+    }
+
+    /// <summary>
+    /// Get the desired momentum tranfer angle from the destination target indicator.
+    /// </summary>
+    /// <returns></returns>
+    private float GetMomentumTransferAngle()
+    {
+        if (destTargetIndicator == null)
+        {
+            return 0.0f; // No indicator to store angle
+        }
+
+        LookAtMouse lookAtMouseScript = destTargetIndicator.GetComponent<LookAtMouse>();
+        if(lookAtMouseScript == null) {
+            return 0.0f; // Destination target indicator is missing the component required for getting the angle.
+        }
+
+        return lookAtMouseScript.getAngleFromMouse(true);
     }
 }
