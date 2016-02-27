@@ -136,4 +136,11 @@ public class EditModeScript : MonoBehaviour {
             renderer.material.color = new Color(1, 1, 1, alpha);
         }
     }
+
+    /// <summary>
+    /// Check if edit mode is active.
+    /// </summary>
+    public bool EditModeActive() {
+        return editModeState == EditModeState.Active;
+    }
 }
