@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5099000}
   - 58: {fileID: 5835964}
   - 96: {fileID: 9693454}
+  - 114: {fileID: 11422870}
   m_Layer: 0
   m_Name: circleGreen
   m_TagString: Untagged
@@ -109,6 +110,17 @@ TrailRenderer:
       rgba: 4288073933
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &11422870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf668820b8c61844fb98b8809665b7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21284388
 SpriteRenderer:
   m_ObjectHideFlags: 1
