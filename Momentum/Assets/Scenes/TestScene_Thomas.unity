@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 230984532c4982b47b2136fb68ea0576, type: 3}
-  m_Color: {r: 0.63235295, g: 0, b: 0.112920344, a: 1}
+  m_Color: {r: 0.7176471, g: 0.003921569, b: 0.13333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &76204693
@@ -285,7 +285,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.20144898, g: 0.25464365, b: 0.33823532, a: 0.019607844}
+  m_BackGroundColor: {r: 0.18652682, g: 0.37512052, b: 0.50735295, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -395,7 +395,8 @@ MonoBehaviour:
     type: 2}
   destTargetIndicatorTemplate: {fileID: 103526, guid: 10744168795420945893324d8423b70e,
     type: 2}
-  onlyAllowTransfersInEditMode: 1
+  allowTransfersInEditMode: 0
+  allowMomentumToSelfTransfer: 0
 --- !u!1 &646727060
 GameObject:
   m_ObjectHideFlags: 0
