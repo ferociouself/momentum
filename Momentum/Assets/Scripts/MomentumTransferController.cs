@@ -75,28 +75,24 @@ public class MomentumTransferController : MonoBehaviour
             return;
         }
 
-        Rigidbody2D sourceRB = source.GetComponent<Rigidbody2D>();
-        if(sourceRB == null) {
-            Debug.LogError("Transfer momentum source must have a rigid body 2d component.");
+        MomentumContainer srcMomentumContainer = source.GetComponent<MomentumContainer>();
+        if(srcMomentumContainer == null) {
+            Debug.LogError("Transfer momentum source must have a momentum container component.");
             return;
         }
 
-        float momentum = sourceRB.mass * sourceRB.velocity.magnitude; // Momentum = mass*velocity
-        sourceRB.velocity = Vector2.zero; // Clear source destination velocity.
-        sourceRB.angularVelocity = 0.0f; // Clear source angular velocity.
+        float momentum = srcMomentumContainer.GetMomentum();
+        srcMomentumContainer.ZeroMomentum();
 
         if(dest != null) {
             // Transfer to destination.
-            Rigidbody2D destRB = dest.GetComponent<Rigidbody2D>();
-            if(destRB == null) {
-                Debug.LogWarning("Tranfer Momentum Destination Has no RigidBody2D. Cannot tranfer momentum to an object with no RigidBody2D.");
+            MomentumContainer destMomentumContainer = dest.GetComponent<MomentumContainer>();
+            if(destMomentumContainer == null) {
+                Debug.LogWarning("Tranfer Momentum Destination has no momentum container. Cannot tranfer momentum to an object without momentum container.");
                 return;
             }
-
-            float addVelocityMagnitude = momentum / destRB.mass;
-            float angleInRad = angle * Mathf.Deg2Rad;
-            Vector2 newMomentum = new Vector2(addVelocityMagnitude * Mathf.Cos(angleInRad), addVelocityMagnitude * Mathf.Sin(angleInRad));
-            destRB.velocity += newMomentum;
+            
+            destMomentumContainer.AddMomentum(momentum, angle);
         }
     }
 
@@ -124,7 +120,7 @@ public class MomentumTransferController : MonoBehaviour
     /// </summary>
     private bool ValidMomentumObject(GameObject obj)
     {
-        return true;
+        return (obj.GetComponent<MomentumContainer>() != null);
     }
 
     /// <summary>

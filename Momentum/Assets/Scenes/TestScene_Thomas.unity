@@ -97,6 +97,7 @@ GameObject:
   - 50: {fileID: 76204691}
   - 58: {fileID: 76204690}
   - 96: {fileID: 76204694}
+  - 114: {fileID: 76204695}
   m_Layer: 0
   m_Name: CircleRed
   m_TagString: Untagged
@@ -224,6 +225,17 @@ TrailRenderer:
       rgba: 4288073933
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &76204695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76204689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf668820b8c61844fb98b8809665b7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &185761975
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +408,7 @@ GameObject:
   - 50: {fileID: 646727063}
   - 58: {fileID: 646727062}
   - 96: {fileID: 646727061}
+  - 114: {fileID: 646727066}
   m_Layer: 0
   m_Name: CircleGreen
   m_TagString: Untagged
@@ -523,6 +536,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &646727066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646727060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf668820b8c61844fb98b8809665b7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &882013405
 GameObject:
   m_ObjectHideFlags: 0
