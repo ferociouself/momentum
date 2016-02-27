@@ -7,6 +7,7 @@ public class MomentumTransferController : MonoBehaviour
     public GameObject sourceTargetIndicatorTemplate; // Template for the object to indicate the selected source target.
     public GameObject destTargetIndicatorTemplate; // Template for the object to indicate the selected destination target.
     public bool onlyAllowTransfersInEditMode = true; // Only allow momentum transfer in edit mode?
+    public bool allowMomentumToSelfTransfer = false; // Allow an object to transfer momentum to itself.
 
     private GameObject sourceTarget; // Source target (null if none).
     private GameObject destTarget; // Destination target (null if none).
@@ -120,7 +121,18 @@ public class MomentumTransferController : MonoBehaviour
     /// </summary>
     private bool ValidMomentumObject(GameObject obj)
     {
-        return (obj.GetComponent<MomentumContainer>() != null);
+        // Make sure object has a momentum container.
+        if (obj.GetComponent<MomentumContainer>() == null) {
+            return false;
+        }
+
+        // Check self transfer
+        if (!allowMomentumToSelfTransfer && sourceTarget != null && obj == sourceTarget)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     /// <summary>
