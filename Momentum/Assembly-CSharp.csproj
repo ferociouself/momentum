@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
      <Compile Include="Assets\Scripts\EditModeScript.cs" />
      <Compile Include="Assets\Scripts\FollowObject.cs" />
      <Compile Include="Assets\Scripts\LookAtMouse.cs" />
