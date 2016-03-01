@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\MomentumTransferController.cs" />
      <Compile Include="Assets\Scripts\MyTime.cs" />
      <Compile Include="Assets\Scripts\ScaleToObject.cs" />
+     <Compile Include="Assets\Scripts\ShowHubby.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
