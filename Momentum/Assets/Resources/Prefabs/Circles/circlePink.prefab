@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf668820b8c61844fb98b8809665b7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectColor: 4
 --- !u!212 &21258756
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -145,7 +146,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 161622855
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 230984532c4982b47b2136fb68ea0576, type: 3}
   m_Color: {r: 0.85098046, g: 0.12941177, b: 0.5372549, a: 1}
@@ -161,6 +162,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LinearDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: objectColor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 161622855
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

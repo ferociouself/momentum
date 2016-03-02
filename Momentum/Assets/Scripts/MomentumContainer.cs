@@ -5,6 +5,20 @@ public class MomentumContainer : MonoBehaviour {
 
     Rigidbody2D myRigidBody;
 
+	public enum MyColor
+	{
+		Blue,
+		Gray,
+		Green,
+		Orange,
+		Pink,
+		Red,
+		White,
+		Yellow
+	}
+
+	public MyColor objectColor;
+
     // Use this for initialization
     void Start() {
         myRigidBody = this.gameObject.GetComponent<Rigidbody2D>();
