@@ -53,6 +53,7 @@
      <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
      <Compile Include="Assets\Scripts\EditModeScript.cs" />
      <Compile Include="Assets\Scripts\FollowObject.cs" />
      <Compile Include="Assets\Scripts\LookAtMouse.cs" />
