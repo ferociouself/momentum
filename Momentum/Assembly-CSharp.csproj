@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\EditModeScript.cs" />
      <Compile Include="Assets\Scripts\FollowObject.cs" />
      <Compile Include="Assets\Scripts\LookAtMouse.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\BlackHole.cs" />
      <Compile Include="Assets\Scripts\Mechanics\Teleporter.cs" />
      <Compile Include="Assets\Scripts\MomentumContainer.cs" />
      <Compile Include="Assets\Scripts\MomentumTransferController.cs" />
