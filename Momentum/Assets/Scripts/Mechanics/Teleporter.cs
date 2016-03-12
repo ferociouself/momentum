@@ -15,5 +15,11 @@ public class Teleporter : MonoBehaviour {
 	// Called whenever another object enters the attached object's collider.
 	void OnTriggerEnter2D(Collider2D coll) {
 		coll.gameObject.transform.Translate(teleportDelta);
+
+        // Reset the trail
+        TrailRenderer trail = coll.gameObject.GetComponent<TrailRenderer>();
+        if (trail != null) {
+            trail.Clear();
+        }
 	}
 }
