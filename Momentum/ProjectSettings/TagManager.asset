@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Goals
+    uniqueID: 2015678117
+    locked: 0
+  - name: Moving Objects
+    uniqueID: 1384710431
+    locked: 0
