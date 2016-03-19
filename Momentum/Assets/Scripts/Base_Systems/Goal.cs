@@ -11,24 +11,16 @@ public class Goal : MonoBehaviour {
 
 	Vector2 pullForce;
 
-	public enum MyColor
-		{
-			Blue,
-			Gray,
-			Green,
-			Orange,
-			Pink,
-			Red,
-			White,
-			Yellow
-		}
-
-	public MyColor goalColor;
+    ObjectColor objColor;
 
 	// Use this for initialization
 	void Start () {
 		playerObj = null;
 		pullForce = new Vector2(0.0f, 0.0f);
+        objColor = this.GetComponent<ObjectColor>();
+        if(objColor == null) {
+            Debug.LogError("Goal must have an object color component.");
+        }
 	}
 	
 	// Update is called once per frame
@@ -45,8 +37,9 @@ public class Goal : MonoBehaviour {
 
 			rb.AddForce(pullForce * 10.0f);
 
-			// After a timeframe, or once the player is in the center, end the level.
+            // After a timeframe, or once the player is in the center, end the level.
 
+            Debug.Log("Distance: " + Distance(gameObject.transform, playerObj.transform));
 			if (Distance(gameObject.transform, playerObj.transform) < 1) {
 				EndLevel();
 				active = false;
@@ -55,10 +48,16 @@ public class Goal : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		active = true;
-		playerObj = coll.gameObject;
-		if (playerObj != null)
-			rb = playerObj.GetComponent<Rigidbody2D>();
+        ObjectColor otherColor = coll.gameObject.GetComponent<ObjectColor>();
+        if (otherColor != null && objColor.CheckSameColor(otherColor))
+        {
+            active = true;
+            playerObj = coll.gameObject;
+            if (playerObj != null)
+            {
+                rb = playerObj.GetComponent<Rigidbody2D>();
+            }
+        }
 	}
 
 	void EndLevel() {
@@ -66,10 +65,17 @@ public class Goal : MonoBehaviour {
 	}
 
 	void StopBall() {
-		if (rb != null)
-			rb.gravityScale = 0;
-		playerObj.GetComponent<MomentumContainer>().ZeroMomentum();
-		stopped = true;
+        if (rb != null)
+        {
+            rb.gravityScale = 0;
+        }
+
+        MomentumContainer playerMomentumContainerScript = playerObj.GetComponent<MomentumContainer>();
+        if (playerMomentumContainerScript != null)
+        {
+            playerMomentumContainerScript.ZeroMomentum();
+            stopped = true;
+        }
 	}
 
 	float Distance(Transform t1, Transform t2) {

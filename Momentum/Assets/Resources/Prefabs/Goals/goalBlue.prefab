@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21256830}
   - 58: {fileID: 5869016}
   - 114: {fileID: 11407984}
+  - 114: {fileID: 11450670}
   m_Layer: 0
   m_Name: goalBlue
   m_TagString: Untagged
@@ -55,7 +56,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669301491e3e140aeba0634b79bf2457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalColor: 0
+--- !u!114 &11450670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b90d35905648aa4f96d0dd17be54952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myColor: 0
 --- !u!212 &21256830
 SpriteRenderer:
   m_ObjectHideFlags: 1
