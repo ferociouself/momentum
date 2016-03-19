@@ -13,6 +13,7 @@ GameObject:
   - 58: {fileID: 5889658}
   - 96: {fileID: 9680880}
   - 114: {fileID: 11415320}
+  - 114: {fileID: 11484964}
   m_Layer: 0
   m_Name: circleOrange
   m_TagString: Untagged
@@ -121,7 +122,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf668820b8c61844fb98b8809665b7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 3
+--- !u!114 &11484964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b90d35905648aa4f96d0dd17be54952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myColor: 3
 --- !u!212 &21228222
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -178,6 +190,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
       value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myColor
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
