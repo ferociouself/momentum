@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\MyTime.cs" />
      <Compile Include="Assets\Scripts\ScaleToObject.cs" />
      <Compile Include="Assets\Scripts\ShowHubby.cs" />
+     <None Include="Assets\Scenes\GameJamTemplateReadMe.txt" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
