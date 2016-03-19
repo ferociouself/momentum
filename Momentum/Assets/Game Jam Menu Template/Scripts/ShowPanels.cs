@@ -7,7 +7,7 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel 
-
+    public GameObject menuCamera;                                   //Store a reference to the UI canvas
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel()
@@ -33,6 +33,7 @@ public class ShowPanels : MonoBehaviour {
 	public void HideMenu()
 	{
 		menuPanel.SetActive (false);
+        //UI.SetActive(false);
 	}
 	
 	//Call this function to activate and display the Pause panel during game play
@@ -49,4 +50,14 @@ public class ShowPanels : MonoBehaviour {
 		optionsTint.SetActive(false);
 
 	}
+
+    public void ShowMenuCamera()
+    {
+        menuCamera.SetActive(true);
+    }
+
+    public void HideMenuCamera()
+    {
+        menuCamera.SetActive(false);
+    }
 }
