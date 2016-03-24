@@ -37,12 +37,12 @@ public class Goal : MonoBehaviour {
 
 			float gForce = 100000 / pullForce.sqrMagnitude;
 			rb.AddForce(pullForce.normalized * gForce * Time.deltaTime);
-			rb.drag = 2*Time.deltaTime;
+			rb.drag = 20*Time.deltaTime;
 
             // After a timeframe, or once the player is in the center, end the level.
 
             Debug.Log("Distance: " + Distance(gameObject.transform, playerObj.transform));
-			if (Distance(gameObject.transform, playerObj.transform) < 1.1) {
+			if (Distance(gameObject.transform, playerObj.transform) < 1.0000000001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
 				StartCoroutine(Wait1Second());
