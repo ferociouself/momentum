@@ -45,7 +45,7 @@ public class Goal : MonoBehaviour {
 			if (Distance(gameObject.transform, playerObj.transform) < 1.1) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
-				EndLevel();
+				StartCoroutine(Wait5Seconds());
 				active = false;
 			}
 		}
@@ -84,5 +84,11 @@ public class Goal : MonoBehaviour {
 
 	float Distance(Transform t1, Transform t2) {
 		return (t1.localPosition - t2.localPosition).magnitude;
+	}
+
+	IEnumerator Wait5Seconds() {
+		yield return new WaitForSeconds(2);
+		EndLevel ();
+		yield break;
 	}
 }
