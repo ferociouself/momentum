@@ -4,4 +4,36 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestScene_MainMenu_Zach.unity
+  - enabled: 1
+    path: Assets/Scenes/World1/World1_1.unity
+  - enabled: 1
+    path: Assets/Scenes/World1/World1_2.unity
+  - enabled: 1
+    path: Assets/Scenes/World1/World1_3.unity
+  - enabled: 1
+    path: Assets/Scenes/World1/World1_4.unity
+  - enabled: 1
+    path: Assets/Scenes/World1/World1_5.unity
+  - enabled: 1
+    path: Assets/Scenes/World2/World2_1.unity
+  - enabled: 1
+    path: Assets/Scenes/World2/World2_2.unity
+  - enabled: 1
+    path: Assets/Scenes/World2/World2_3.unity
+  - enabled: 1
+    path: Assets/Scenes/World2/World2_5.unity
+  - enabled: 1
+    path: Assets/Scenes/World2/World2_4.unity
+  - enabled: 1
+    path: Assets/Scenes/World3/World3_1.unity
+  - enabled: 1
+    path: Assets/Scenes/World3/World3_2.unity
+  - enabled: 0
+    path: Assets/Scenes/World3/World3_3.unity
+  - enabled: 0
+    path: Assets/Scenes/World3/World3_4.unity
+  - enabled: 1
+    path: Assets/Scenes/World3/World3_5.unity
