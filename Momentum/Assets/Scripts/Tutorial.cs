@@ -71,9 +71,11 @@ public class Tutorial : MonoBehaviour {
 			textValue [3].enabled = true;
 			used = true;
 		}
-		if (Input.GetMouseButtonUp(0) && textValue[3].enabled == true && !used && )
+		if (Input.GetMouseButtonUp(0) && textValue[3].enabled == true && !used)
 		{
-			Debug.LogError("work");
+			textValue [3].enabled = false;
+			textValue [4].enabled = true;
+			used = true;
 		}
 
 		used = false;
