@@ -6,6 +6,8 @@ public class Goal : MonoBehaviour {
 	bool active = false;
 	bool stopped = false;
 
+	bool tripped = false;
+
 	GameObject playerObj;
 	Rigidbody2D rb;
 
@@ -64,9 +66,9 @@ public class Goal : MonoBehaviour {
         }
 	}
 
-	void EndLevel() {
-		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
-	}
+	//void EndLevel() {
+	//	UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+	//}
 
 	void StopBall() {
         if (rb != null)
@@ -88,7 +90,11 @@ public class Goal : MonoBehaviour {
 
 	IEnumerator Wait1Second() {
 		yield return new WaitForSeconds(1);
-		EndLevel ();
+		tripped = true;
 		yield break;
+	}
+
+	public bool getActive() {
+		return tripped;
 	}
 }

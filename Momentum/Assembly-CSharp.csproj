@@ -55,6 +55,7 @@
      <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\Restarter.cs" />
      <Compile Include="Assets\Scripts\EditModeScript.cs" />
