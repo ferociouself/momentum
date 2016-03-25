@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		greenBall = GameObject.Find("circleGreen");
+		greenBall = GameObject.Find("circleGreenNew");
 		greenGoal = GameObject.Find ("goalGreen");
 		canvas = GameObject.Find("Canvas");
 		textValue = canvas.GetComponentsInChildren<Text>();
