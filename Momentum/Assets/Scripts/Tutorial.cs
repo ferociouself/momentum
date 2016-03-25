@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour {
 	float timeToWait = 0.25f;
 	bool checkingTime;
 	bool timerDone;
-	bool state2;
+	bool used;
 
 
 
@@ -59,33 +59,25 @@ public class Tutorial : MonoBehaviour {
 			timerDone = false;
 		}
 
-		if (Input.GetButtonDown ("Pause") && textValue [1].enabled == true) {
+		if (Input.GetButtonDown ("Pause") && textValue [1].enabled == true && !used) {
 			textValue [1].enabled = false;
 			textValue [2].enabled = true;
-			state2 = true;
+			used = true;
 		}
-
-		if (Input.GetButtonUp("ClearTargets"))
-		{
-			ClearTargets();
-		}
-
-		if(Input.GetButtonDown("Pause") && textValue[2].enabled == true && state2)
+		
+		if(Input.GetButtonDown("Pause") && textValue[2].enabled == true && !used)
 		{
 			textValue [2].enabled = false;
 			textValue [3].enabled = true;
+			used = true;
 		}
-		if (Input.GetMouseButtonUp(0))
+		if (Input.GetMouseButtonUp(0) && textValue[3].enabled == true && !used && )
 		{
 			Debug.LogError("work");
 		}
 
-	}
+		used = false;
 
-	private void ClearTargets()
-	{
-		ClearDest();
-		ClearSource();
 	}
-
+		
 }
