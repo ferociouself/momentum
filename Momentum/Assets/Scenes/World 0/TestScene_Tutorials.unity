@@ -553,7 +553,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose a direction
+  m_Text: GOOOOOOOAAAAALLLLLL!!!
 --- !u!222 &793887032
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1207,7 +1207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose a direction
+  m_Text: Go for the goal
 --- !u!222 &1495269552
 CanvasRenderer:
   m_ObjectHideFlags: 0
