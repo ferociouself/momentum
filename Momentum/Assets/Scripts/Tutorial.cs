@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour {
 
-	GameObject redBall;
+	GameObject greenGoal;
 	GameObject greenBall;
 	GameObject canvas;
 	Text[] textValue;
@@ -20,7 +20,7 @@ public class Tutorial : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		greenBall = GameObject.Find("circleGreen");
-		redBall = GameObject.Find ("circleRed");
+		greenGoal = GameObject.Find ("goalGreen");
 		canvas = GameObject.Find("Canvas");
 		textValue = canvas.GetComponentsInChildren<Text>();
 		EMS = GetComponent<EditModeScript>();
@@ -71,10 +71,31 @@ public class Tutorial : MonoBehaviour {
 			textValue [3].enabled = true;
 			used = true;
 		}
+			
 		if (Input.GetMouseButtonUp(0) && textValue[3].enabled == true && !used)
 		{
 			textValue [3].enabled = false;
 			textValue [4].enabled = true;
+			used = true;
+		}
+
+		if (Input.GetMouseButtonUp(0) && textValue[4].enabled == true && !used)
+		{
+			textValue [4].enabled = false;
+			textValue [5].enabled = true;
+			used = true;
+		}
+
+		if (Input.GetMouseButtonUp(0) && textValue[5].enabled == true && !used)
+		{
+			textValue [5].enabled = false;
+			textValue [6].enabled = true;
+			used = true;
+		}
+
+		if (greenBall.transform.position == greenGoal.transform.position) {
+			textValue [6].enabled = false;
+			textValue [7].enabled = true;
 			used = true;
 		}
 
