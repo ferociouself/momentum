@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
-    public bool fadeToWhiteOnComplete = true;
-    private float fadeToWhiteTimeMax = 0.5f;
-    private float fadeToWhiteTimer = -1.0f;
+    public bool fadeToColOnComplete = true;
+    public Color fadeColor = Color.white;
+    private float fadeToColTimeMax = 0.5f;
+    private float fadeToColTimer = -1.0f;
 
     bool active = false;
 	bool stopped = false;
@@ -14,6 +15,8 @@ public class Goal : MonoBehaviour {
 
 	GameObject playerObj;
 	Rigidbody2D rb;
+    SpriteRenderer spriteRend;
+    Color initCol;
 
 	Vector2 pullForce;
 
@@ -25,6 +28,8 @@ public class Goal : MonoBehaviour {
 		playerObj = null;
 		pullForce = new Vector2(0.0f, 0.0f);
         objColor = this.GetComponent<ObjectColor>();
+        spriteRend = this.GetComponent<SpriteRenderer>();
+        initCol = spriteRend.color;
         if(objColor == null) {
             Debug.LogError("Goal must have an object color component.");
         }
@@ -54,14 +59,25 @@ public class Goal : MonoBehaviour {
 				StartCoroutine(Wait1Second());
 				active = false;
 
-                if(fadeToWhiteOnComplete) {
-                    fadeToWhiteTimer = fadeToWhiteTimeMax;
+                if(fadeToColOnComplete) {
+                    fadeToColTimer = fadeToColTimeMax;
                 }
 			}
 		}
 
-        if(fadeToWhiteTimer > 0) {
+        if(fadeToColTimer > 0) {
+            float lerpTime = (fadeToColTimeMax - fadeToColTimer) / fadeToColTimeMax;
+            float lerpColR = Mathf.Lerp(initCol.r, fadeColor.r, lerpTime);
+            float lerpColG = Mathf.Lerp(initCol.g, fadeColor.g, lerpTime);
+            float lerpColB = Mathf.Lerp(initCol.b, fadeColor.b, lerpTime);
+            float lerpColA = Mathf.Lerp(initCol.a, fadeColor.a, lerpTime);
 
+            Color lerpCol = new Color(lerpColR, lerpColG, lerpColB, lerpColA);
+            spriteRend.color = lerpCol;
+            fadeToColTimer -= MyTime.deltaTime;
+            if(fadeToColTimer <= 0) {
+                fadeToColTimer = -1;
+            }
         }
 	}
 
