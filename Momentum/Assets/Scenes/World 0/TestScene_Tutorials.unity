@@ -408,8 +408,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Now it's easy to begin to see how this level will unfold. \n\nWith this
-    newfound knowledge, press space to pause again"
+  m_Text: "Now it's easy to see how this level will unfold. \n\nWith this newfound
+    knowledge, press space to pause again"
 --- !u!222 &441974371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -802,7 +802,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Each level begins paused;
+  m_Text: 'Each level starts paused;
 
     press space to begin...'
 --- !u!222 &1076000622
@@ -1108,7 +1108,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click the object to give momentum to
+  m_Text: Select a momentum reciever!
 --- !u!222 &1464516442
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1197,7 +1197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose a direction
+  m_Text: Choose a direction->
 --- !u!222 &1577092583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1270,7 +1270,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click the object to take momentum from
+  m_Text: Select a momentum donor!
 --- !u!222 &1912582377
 CanvasRenderer:
   m_ObjectHideFlags: 0
