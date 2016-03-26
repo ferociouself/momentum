@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EditModeController
   - goal
+  - Circle
   layers:
   - Default
   - TransparentFX
