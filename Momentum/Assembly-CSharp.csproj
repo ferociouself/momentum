@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\ButtonOnClick.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\DontDestroy.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\Pause.cs" />
@@ -54,6 +55,7 @@
      <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\Restarter.cs" />
      <Compile Include="Assets\Scripts\EditModeScript.cs" />
@@ -66,6 +68,7 @@
      <Compile Include="Assets\Scripts\MyTime.cs" />
      <Compile Include="Assets\Scripts\ScaleToObject.cs" />
      <Compile Include="Assets\Scripts\ShowHubby.cs" />
+     <Compile Include="Assets\Scripts\Tutorial.cs" />
      <None Include="Assets\Scenes\GameJamTemplateReadMe.txt" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
  <Reference Include="UnityEngine.UI">
