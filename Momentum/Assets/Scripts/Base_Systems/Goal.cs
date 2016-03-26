@@ -42,8 +42,7 @@ public class Goal : MonoBehaviour {
 			rb.drag = 20*Time.deltaTime;
 
             // After a timeframe, or once the player is in the center, end the level.
-
-            Debug.Log("Distance: " + Distance(gameObject.transform, playerObj.transform));
+            
 			if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
