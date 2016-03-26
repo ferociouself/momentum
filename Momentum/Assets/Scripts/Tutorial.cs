@@ -14,18 +14,18 @@ public class Tutorial : MonoBehaviour {
 	bool checkingTime;
 	bool timerDone;
 	bool used;
+    bool firstRun;
 
 
 
 	// Use this for initialization
 	void Start () {
+        firstRun = true;
 		greenBall = GameObject.Find("circleGreenNew");
 		greenGoal = GameObject.Find ("goalGreen");
 		canvas = GameObject.Find("Canvas");
 		textValue = canvas.GetComponentsInChildren<Text>();
 		EMS = GetComponent<EditModeScript>();
-		EMS.enabled = false;
-		Debug.LogError("ayylmao");
 		foreach(Text txt in textValue)
 		{
 			txt.enabled = false;
@@ -36,12 +36,15 @@ public class Tutorial : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        
+        if(firstRun) {
+            EMS.enabled = false;
+            firstRun = false;
+        }
 
 		if (checkingTime)
 		{
 			timer += 0.001f;
-			Debug.LogError(timer);
 
 			if (timer >= timeToWait)
 			{
