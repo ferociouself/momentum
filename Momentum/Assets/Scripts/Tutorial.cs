@@ -11,7 +11,7 @@ public class Tutorial : MonoBehaviour
     Text[] textValue;
     public EditModeScript EMS;
     float timer = 0;
-    float timeToWait = 0.25f;
+    float timeToWait = 0.10f;
     bool checkingTime;
     bool timerDone;
     bool used;
@@ -101,12 +101,12 @@ public class Tutorial : MonoBehaviour
             used = true;
         }
 
-        if (greenBall.transform.position == greenGoal.transform.position)
-        {
-            textValue[6].enabled = false;
-            textValue[7].enabled = true;
-            used = true;
-        }
+//        if (greenBall.transform.position == greenGoal.transform.position)
+//        {
+//            textValue[6].enabled = false;
+//            textValue[7].enabled = true;
+//            used = true;
+//        }
 
         used = false;
 
