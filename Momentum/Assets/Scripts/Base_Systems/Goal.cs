@@ -3,23 +3,33 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
-	bool active = false;
+    public bool fadeToColOnComplete = true;
+    public Color fadeColor = Color.white;
+    private float fadeToColTimeMax = 0.5f;
+    private float fadeToColTimer = -1.0f;
+
+    bool active = false;
 	bool stopped = false;
 
 	bool tripped = false;
 
 	GameObject playerObj;
 	Rigidbody2D rb;
+    SpriteRenderer spriteRend;
+    Color initCol;
 
 	Vector2 pullForce;
 
     ObjectColor objColor;
+
 
 	// Use this for initialization
 	void Start () {
 		playerObj = null;
 		pullForce = new Vector2(0.0f, 0.0f);
         objColor = this.GetComponent<ObjectColor>();
+        spriteRend = this.GetComponent<SpriteRenderer>();
+        initCol = spriteRend.color;
         if(objColor == null) {
             Debug.LogError("Goal must have an object color component.");
         }
@@ -42,15 +52,33 @@ public class Goal : MonoBehaviour {
 			rb.drag = 20*Time.deltaTime;
 
             // After a timeframe, or once the player is in the center, end the level.
-
-            Debug.Log("Distance: " + Distance(gameObject.transform, playerObj.transform));
+            
 			if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
 				StartCoroutine(Wait1Second());
 				active = false;
+
+                if(fadeToColOnComplete) {
+                    fadeToColTimer = fadeToColTimeMax;
+                }
 			}
 		}
+
+        if(fadeToColTimer > 0) {
+            float lerpTime = (fadeToColTimeMax - fadeToColTimer) / fadeToColTimeMax;
+            float lerpColR = Mathf.Lerp(initCol.r, fadeColor.r, lerpTime);
+            float lerpColG = Mathf.Lerp(initCol.g, fadeColor.g, lerpTime);
+            float lerpColB = Mathf.Lerp(initCol.b, fadeColor.b, lerpTime);
+            float lerpColA = Mathf.Lerp(initCol.a, fadeColor.a, lerpTime);
+
+            Color lerpCol = new Color(lerpColR, lerpColG, lerpColB, lerpColA);
+            spriteRend.color = lerpCol;
+            fadeToColTimer -= MyTime.deltaTime;
+            if(fadeToColTimer <= 0) {
+                fadeToColTimer = -1;
+            }
+        }
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
