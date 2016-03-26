@@ -3,7 +3,11 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
-	bool active = false;
+    public bool fadeToWhiteOnComplete = true;
+    private float fadeToWhiteTimeMax = 0.5f;
+    private float fadeToWhiteTimer = -1.0f;
+
+    bool active = false;
 	bool stopped = false;
 
 	bool tripped = false;
@@ -14,6 +18,7 @@ public class Goal : MonoBehaviour {
 	Vector2 pullForce;
 
     ObjectColor objColor;
+
 
 	// Use this for initialization
 	void Start () {
@@ -42,15 +47,22 @@ public class Goal : MonoBehaviour {
 			rb.drag = 20*Time.deltaTime;
 
             // After a timeframe, or once the player is in the center, end the level.
-
-            Debug.Log("Distance: " + Distance(gameObject.transform, playerObj.transform));
+            
 			if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
 				StartCoroutine(Wait1Second());
 				active = false;
+
+                if(fadeToWhiteOnComplete) {
+                    fadeToWhiteTimer = fadeToWhiteTimeMax;
+                }
 			}
 		}
+
+        if(fadeToWhiteTimer > 0) {
+
+        }
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {

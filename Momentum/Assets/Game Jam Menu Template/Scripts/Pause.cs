@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
@@ -57,5 +58,8 @@ public class Pause : MonoBehaviour {
 		showPanels.HidePausePanel ();
 	}
 
-
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
 }
