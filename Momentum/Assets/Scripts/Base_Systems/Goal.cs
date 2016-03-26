@@ -6,6 +6,8 @@ public class Goal : MonoBehaviour {
 	bool active = false;
 	bool stopped = false;
 
+	bool tripped = false;
+
 	GameObject playerObj;
 	Rigidbody2D rb;
 
@@ -37,15 +39,15 @@ public class Goal : MonoBehaviour {
 
 			float gForce = 100000 / pullForce.sqrMagnitude;
 			rb.AddForce(pullForce.normalized * gForce * Time.deltaTime);
-			rb.drag = 2*Time.deltaTime;
+			rb.drag = 20*Time.deltaTime;
 
             // After a timeframe, or once the player is in the center, end the level.
 
             Debug.Log("Distance: " + Distance(gameObject.transform, playerObj.transform));
-			if (Distance(gameObject.transform, playerObj.transform) < 1.1) {
+			if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
-				EndLevel();
+				StartCoroutine(Wait1Second());
 				active = false;
 			}
 		}
@@ -64,9 +66,9 @@ public class Goal : MonoBehaviour {
         }
 	}
 
-	void EndLevel() {
-		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
-	}
+	//void EndLevel() {
+	//	UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+	//}
 
 	void StopBall() {
         if (rb != null)
@@ -84,5 +86,15 @@ public class Goal : MonoBehaviour {
 
 	float Distance(Transform t1, Transform t2) {
 		return (t1.localPosition - t2.localPosition).magnitude;
+	}
+
+	IEnumerator Wait1Second() {
+		yield return new WaitForSeconds(1);
+		tripped = true;
+		yield break;
+	}
+
+	public bool getActive() {
+		return tripped;
 	}
 }

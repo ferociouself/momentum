@@ -122,6 +122,12 @@ public class MomentumTransferController : MonoBehaviour
             return;
         }
 
+		ObjectColor srcObjectColor = source.GetComponent<ObjectColor>();
+		if(srcObjectColor.GetColor() == ObjectColor.MyColor.Gray) {
+			Debug.LogError("Transfer momentum source cannot be gray.");
+			return;
+		}
+
         float momentum = srcMomentumContainer.GetMomentum();
         srcMomentumContainer.ZeroMomentum();
 
@@ -176,6 +182,10 @@ public class MomentumTransferController : MonoBehaviour
         {
             return false;
         }
+		if (obj.GetComponent<ObjectColor>().GetColor() == ObjectColor.MyColor.Gray)
+		{
+			return false;
+		}
 
         return true;
     }
