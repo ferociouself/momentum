@@ -9,7 +9,7 @@ public class Tutorial : MonoBehaviour
     GameObject greenBall;
     GameObject canvas;
     Text[] textValue;
-    public EditModeScript EMS;
+    EditModeScript EMS;
     float timer = 0;
     float timeToWait = 0.10f;
     bool checkingTime;
@@ -97,7 +97,7 @@ public class Tutorial : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && textValue[5].enabled == true && !used)
         {
             textValue[5].enabled = false;
-            textValue[6].enabled = true;
+            // textValue[6].enabled = true;
             used = true;
         }
 
