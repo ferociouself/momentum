@@ -21,6 +21,10 @@ public class EditModeScript : MonoBehaviour {
     private float transitionTimer = 0.0f;
     private EditModeState editModeState; // Current status of edit mode
 
+	private int pauseCount = 0;
+
+	private float pauseResource = 50.0f;
+
     /// <summary>
     /// Use this for initialization
     /// </summary>
@@ -39,13 +43,21 @@ public class EditModeScript : MonoBehaviour {
     /// Update is called once per frame
     /// </summary>
 	void Update () {
-	    if(Input.GetButtonDown("Pause"))
+		if(Input.GetButtonDown("Pause") && pauseResource > 10.0f)
         {
             // Switch to edit mode if current mode is inactive or leaving.
             // Switch away from edit mode if current mode is active or entering.
             //
             ToggleEditMode();
         }
+		if (editModeState == EditModeState.Active) {
+			pauseResource = Mathf.Max(pauseResource - 0.05f, 0.0f);
+		} else if (editModeState == EditModeState.Inactive) {
+			pauseResource = Mathf.Min(pauseResource + 0.05f, 50.0f);
+		}
+		if (pauseResource == 0.0f) {
+			BeginEditModeTransition(false);
+		}
         UpdateTransitions();
     }
 
@@ -107,6 +119,10 @@ public class EditModeScript : MonoBehaviour {
         {
             transitionTimer = 0;
         }
+		if (toEdit) {
+			pauseCount++;
+			pauseResource -= 5.0f;
+		}
         editModeState = (toEdit ? EditModeState.Entering : EditModeState.Exiting);
     }
 
