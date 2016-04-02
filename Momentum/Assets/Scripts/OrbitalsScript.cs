@@ -20,4 +20,21 @@ public class OrbitalsScript : MonoBehaviour {
             orbital.transform.RotateAround(transform.position, rotationAxis, orbitalSpeed * Time.deltaTime);
         }
     }
+
+    /// <summary>
+    /// Add an orbital
+    /// </summary>
+    public void AddOrbital(GameObject obj) {
+        orbitals.Add(obj);
+    }
+
+    /// <summary>
+    /// Remove an orbital (if it exists).
+    /// </summary>
+    public void RemoveOrbital(GameObject obj) {
+        if (orbitals.Contains(obj))
+        {
+            orbitals.Remove(obj);
+        }
+    }
 }
