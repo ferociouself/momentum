@@ -72,6 +72,7 @@
     <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
     <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
     <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
+    <Compile Include="Assets\Scripts\AutoSpin.cs" />
     <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
     <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
     <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
@@ -80,11 +81,13 @@
     <Compile Include="Assets\Scripts\FollowObject.cs" />
     <Compile Include="Assets\Scripts\LookAtMouse.cs" />
     <Compile Include="Assets\Scripts\Mechanics\BlackHole.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\BlowPad.cs" />
     <Compile Include="Assets\Scripts\Mechanics\Teleporter.cs" />
     <Compile Include="Assets\Scripts\Mechanics\ZeroGravity.cs" />
     <Compile Include="Assets\Scripts\MomentumContainer.cs" />
     <Compile Include="Assets\Scripts\MomentumTransferController.cs" />
     <Compile Include="Assets\Scripts\MyTime.cs" />
+    <Compile Include="Assets\Scripts\OrbitalsScript.cs" />
     <Compile Include="Assets\Scripts\ScaleToObject.cs" />
     <Compile Include="Assets\Scripts\ShowHubby.cs" />
     <Compile Include="Assets\Scripts\Tutorial.cs" />
