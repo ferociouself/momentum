@@ -22,7 +22,7 @@ public class EditModeScript : MonoBehaviour {
     private EditModeState editModeState; // Current status of edit mode
 
 	private int pauseCount = 0;
-
+	private bool resourceDrain = false;
 	private float pauseResource = 50.0f;
 
     /// <summary>
@@ -50,11 +50,12 @@ public class EditModeScript : MonoBehaviour {
             //
             ToggleEditMode();
         }
-		if (editModeState == EditModeState.Active) {
+		if (resourceDrain) {
 			pauseResource = Mathf.Max(pauseResource - 0.05f, 0.0f);
-		} else if (editModeState == EditModeState.Inactive) {
+		} else {
 			pauseResource = Mathf.Min(pauseResource + 0.05f, 50.0f);
 		}
+		Debug.Log(pauseResource + " " + pauseCount);
 		if (pauseResource == 0.0f) {
 			BeginEditModeTransition(false);
 		}
@@ -110,6 +111,7 @@ public class EditModeScript : MonoBehaviour {
     /// </summary>
     void BeginEditModeTransition(bool toEdit)
     {
+		resourceDrain = toEdit;
         // Smooth switching when in transition state.
         if (transitionTimer > 0)
         {
