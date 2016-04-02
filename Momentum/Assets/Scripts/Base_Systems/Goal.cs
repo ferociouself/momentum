@@ -5,8 +5,10 @@ public class Goal : MonoBehaviour {
 
     public bool fadeToColOnComplete = true;
     public Color fadeColor = Color.white;
+    public float pullStrength = 50.0f; // Will be Multipled by 1000
     private float fadeToColTimeMax = 0.5f;
     private float fadeToColTimer = -1.0f;
+    private float pullStrengthMagnifier = 1000.0f;
 
     bool active = false;
 	bool stopped = false;
@@ -17,8 +19,7 @@ public class Goal : MonoBehaviour {
 	Rigidbody2D rb;
     SpriteRenderer spriteRend;
     Color initCol;
-
-	Vector2 pullForce;
+    OrbitalsScript orbitalScript;
 
     ObjectColor objColor;
 
@@ -26,9 +27,9 @@ public class Goal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerObj = null;
-		pullForce = new Vector2(0.0f, 0.0f);
         objColor = this.GetComponent<ObjectColor>();
         spriteRend = this.GetComponent<SpriteRenderer>();
+        orbitalScript = this.GetComponent<OrbitalsScript>();
         initCol = spriteRend.color;
         if(objColor == null) {
             Debug.LogError("Goal must have an object color component.");
@@ -44,13 +45,15 @@ public class Goal : MonoBehaviour {
 				StopBall();
 			}
 
-			pullForce.Set(gameObject.transform.localPosition.x - playerObj.transform.localPosition.x, 
-				gameObject.transform.localPosition.y - playerObj.transform.localPosition.y);
+			Vector3 pullForceDirection = new Vector3(
+                gameObject.transform.localPosition.x - playerObj.transform.localPosition.x, 
+				gameObject.transform.localPosition.y - playerObj.transform.localPosition.y,
+                gameObject.transform.localPosition.z - playerObj.transform.localPosition.z
+                );
 
-			float gForce = 100000 / pullForce.sqrMagnitude;
-			rb.AddForce(pullForce.normalized * gForce * Time.deltaTime);
-			rb.drag = 20*Time.deltaTime;
-
+            float magnifiedPullStrength = pullStrength * pullStrengthMagnifier;
+            rb.AddForce(pullForceDirection.normalized * magnifiedPullStrength * Time.deltaTime);
+			
             // After a timeframe, or once the player is in the center, end the level.
             
 			if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
