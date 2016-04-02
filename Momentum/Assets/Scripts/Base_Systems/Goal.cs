@@ -22,7 +22,7 @@ public class Goal : MonoBehaviour {
     OrbitalsScript orbitalScript;
 
     ObjectColor objColor;
-
+    
 
 	// Use this for initialization
 	void Start () {
@@ -45,18 +45,22 @@ public class Goal : MonoBehaviour {
 				StopBall();
 			}
 
-			Vector3 pullForceDirection = new Vector3(
+			Vector2 pullForceDirection = new Vector2(
                 gameObject.transform.localPosition.x - playerObj.transform.localPosition.x, 
-				gameObject.transform.localPosition.y - playerObj.transform.localPosition.y,
-                gameObject.transform.localPosition.z - playerObj.transform.localPosition.z
+				gameObject.transform.localPosition.y - playerObj.transform.localPosition.y
                 );
 
-            float magnifiedPullStrength = pullStrength * pullStrengthMagnifier;
-            rb.AddForce(pullForceDirection.normalized * magnifiedPullStrength * Time.deltaTime);
-			
-            // After a timeframe, or once the player is in the center, end the level.
+            Vector2 correctionForce = pullForceDirection - rb.velocity;
+            float correctionForceMagnitude = correctionForce.magnitude;
             
-			if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
+            float magnifiedPullStrength = pullStrength * pullStrengthMagnifier;
+
+            rb.AddForce(pullForceDirection.normalized * magnifiedPullStrength * Time.deltaTime);
+            rb.AddForce(correctionForce.normalized * magnifiedPullStrength * Time.deltaTime);
+            
+            // After a timeframe, or once the player is in the center, end the level.
+
+            if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
 				StartCoroutine(Wait1Second());
@@ -110,7 +114,7 @@ public class Goal : MonoBehaviour {
         MomentumContainer playerMomentumContainerScript = playerObj.GetComponent<MomentumContainer>();
         if (playerMomentumContainerScript != null)
         {
-            playerMomentumContainerScript.ZeroMomentum();
+            // playerMomentumContainerScript.ZeroMomentum();
             stopped = true;
         }
 	}
