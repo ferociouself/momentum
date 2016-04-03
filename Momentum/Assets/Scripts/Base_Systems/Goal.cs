@@ -89,6 +89,10 @@ public class Goal : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
+        if(rb != null) {
+            return; // Goal is already filled.
+        }
+
         ObjectColor otherColor = coll.gameObject.GetComponent<ObjectColor>();
         if (otherColor != null && objColor.CheckSameColor(otherColor))
         {
