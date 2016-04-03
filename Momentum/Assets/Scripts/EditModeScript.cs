@@ -43,12 +43,16 @@ public class EditModeScript : MonoBehaviour {
     /// Update is called once per frame
     /// </summary>
 	void Update () {
-		if(Input.GetButtonDown("Pause") && pauseResource > 10.0f)
+		if(Input.GetButtonDown("Pause"))
         {
             // Switch to edit mode if current mode is inactive or leaving.
             // Switch away from edit mode if current mode is active or entering.
+            // Don't allow going into edit mode if resource < 10
             //
-            ToggleEditMode();
+            if (pauseResource > 10.0f || editModeState == EditModeState.Active || editModeState == EditModeState.Entering)
+            {
+                ToggleEditMode();
+            }
         }
 		if (resourceDrain) {
 			pauseResource = Mathf.Max(pauseResource - 0.05f, 0.0f);
