@@ -59,7 +59,7 @@ public class EditModeScript : MonoBehaviour {
 		} else {
 			pauseResource = Mathf.Min(pauseResource + 0.05f, 50.0f);
 		}
-		Debug.Log(pauseResource + " " + pauseCount);
+		//Debug.Log(pauseResource + " " + pauseCount);
 		if (pauseResource == 0.0f) {
 			BeginEditModeTransition(false);
 		}
