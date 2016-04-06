@@ -7,12 +7,10 @@ public class ZeroGravity : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Start");
         GameObject[] allObjs = GameObject.FindGameObjectsWithTag("Circle");
         foreach (GameObject obj in allObjs)
         {
             Vector3 pos = obj.transform.position;
-            Debug.Log("In Loop: " + pos);
             if (PointInOABB(pos, gameObject.GetComponent<BoxCollider2D>()))
             {
                 obj.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
