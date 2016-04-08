@@ -64,6 +64,8 @@
      <Compile Include="Assets\Scripts\LookAtMouse.cs" />
      <Compile Include="Assets\Scripts\Mechanics\BlackHole.cs" />
      <Compile Include="Assets\Scripts\Mechanics\BlowPad.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\Destroyer.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\ObjectPuller.cs" />
      <Compile Include="Assets\Scripts\Mechanics\Teleporter.cs" />
      <Compile Include="Assets\Scripts\Mechanics\ZeroGravity.cs" />
      <Compile Include="Assets\Scripts\MomentumContainer.cs" />
