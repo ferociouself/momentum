@@ -79,6 +79,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 497144}
   - 114: {fileID: 11424490}
+  - 58: {fileID: 5863104}
+  - 58: {fileID: 5874166}
+  - 58: {fileID: 5852966}
+  - 114: {fileID: 11460490}
   m_Layer: 0
   m_Name: GravityWarper
   m_TagString: Untagged
@@ -181,6 +185,48 @@ Transform:
   - {fileID: 405092}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!58 &5852966
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132634}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
+--- !u!58 &5863104
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132634}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.8
+--- !u!58 &5874166
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132634}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!114 &11424490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +244,20 @@ MonoBehaviour:
   - {fileID: 128036}
   - {fileID: 103486}
   - {fileID: 138796}
+--- !u!114 &11460490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824713b60c04e4323a585969f372adf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pullValue: 500
+  minAlpha: 1
+  maxAlpha: 1
 --- !u!198 &19813946
 ParticleSystem:
   m_ObjectHideFlags: 1
