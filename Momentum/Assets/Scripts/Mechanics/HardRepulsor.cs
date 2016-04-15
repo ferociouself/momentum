@@ -19,7 +19,6 @@ public class HardRepulsor : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		Debug.Log(coll.rigidbody.velocity.magnitude);
 		pushForce = new Vector2(coll.transform.position.x - gameObject.transform.position.x, 
 			coll.transform.position.y - gameObject.transform.position.y);
 		pushMagnitude = coll.rigidbody.velocity.magnitude * pushModifier;
