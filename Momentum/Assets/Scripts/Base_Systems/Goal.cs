@@ -60,7 +60,7 @@ public class Goal : MonoBehaviour {
             
             // After a timeframe, or once the player is in the center, end the level.
 
-            if (Distance(gameObject.transform, playerObj.transform) < 1.0001) {
+            if (StaticMethods.Distance(gameObject.transform, playerObj.transform) < 1.0001) {
 				playerObj.transform.position = gameObject.transform.position;
 				rb.constraints = RigidbodyConstraints2D.FreezePosition;
 				StartCoroutine(Wait1Second());
@@ -121,10 +121,6 @@ public class Goal : MonoBehaviour {
             // playerMomentumContainerScript.ZeroMomentum();
             stopped = true;
         }
-	}
-
-	float Distance(Transform t1, Transform t2) {
-		return (t1.localPosition - t2.localPosition).magnitude;
 	}
 
 	IEnumerator Wait1Second() {

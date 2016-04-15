@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BlackHole : MonoBehaviour {
 
@@ -10,59 +11,48 @@ public class BlackHole : MonoBehaviour {
 	Vector2 pullForce;
 
 	bool active;
-
-	GameObject playerObj;
-	Rigidbody2D rb;
+	List<GameObject> activeObjectList;
 
 	// Use this for initialization
 	void Start () {
 		pullForce = new Vector2(0.0f, 0.0f);
+		activeObjectList = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		active = activeObjectList.Count > 0;
 		if (active) {
-			pullForce.Set(gameObject.transform.localPosition.x - playerObj.transform.localPosition.x, 
-				gameObject.transform.localPosition.y - playerObj.transform.localPosition.y);
+			foreach (GameObject obj in activeObjectList) {
+				pullForce.Set(gameObject.transform.localPosition.x - obj.transform.localPosition.x, 
+					gameObject.transform.localPosition.y - obj.transform.localPosition.y);
+				SpriteRenderer objectColor = obj.GetComponent<SpriteRenderer>();
 
-			SpriteRenderer objectColor = playerObj.GetComponent<SpriteRenderer>();
+				float dist = StaticMethods.Distance(gameObject.transform, obj.transform);
+				float maxDist = gameObject.GetComponent<CircleCollider2D>().radius * 5;
+				float newAlpha = minAlpha + ((maxAlpha - minAlpha) * Mathf.Min(1, dist / maxDist));
 
-			float dist = distance(gameObject.transform, playerObj.transform);
-            float maxDist = gameObject.GetComponent<CircleCollider2D>().radius * 5;
-            float newAlpha = minAlpha + ((maxAlpha - minAlpha) * Mathf.Min(1, dist / maxDist));
+				objectColor.color = new Color(
+					objectColor.color.r,
+					objectColor.color.g,
+					objectColor.color.b,
+					newAlpha
+				);
 
-            objectColor.color = new Color(
-                objectColor.color.r,
-                objectColor.color.g,
-                objectColor.color.b,
-                newAlpha
-                );
-
-			rb.AddForce(pullForce * pullValue);
-		} else {
-			
+				obj.GetComponent<Rigidbody2D>().AddForce(pullForce * pullValue);
+			}
 		}
 	}
 
 	public void OnTriggerEnter2D(Collider2D coll) {
-		active = true;
-		playerObj = coll.gameObject;
-		if (playerObj != null) {
-			rb = playerObj.GetComponent<Rigidbody2D>();
-		}
+		if (!activeObjectList.Contains(coll.gameObject))
+			activeObjectList.Add(coll.gameObject);
 	}
 
 	public void OnTriggerExit2D(Collider2D coll) {
-		active = false;
-		playerObj = null;
-		rb = null;
+		if (activeObjectList.Contains(coll.gameObject)) 
+			activeObjectList.Remove(coll.gameObject);
 		SpriteRenderer objectColor = coll.gameObject.GetComponent<SpriteRenderer>();
 		objectColor.color = new Color(objectColor.color.r, objectColor.color.g, objectColor.color.b, 1f);
-	}
-
-	private float distance(Transform t1, Transform t2) {
-		// gameObject.transform.localPosition.x - playerObj.transform.localPosition.x, 
-		// gameObject.transform.localPosition.y - playerObj.transform.localPosition.y;
-		return Mathf.Sqrt(Mathf.Pow(t1.localPosition.x - t2.localPosition.x, 2) + Mathf.Pow(t1.localPosition.y - t2.localPosition.y, 2));
 	}
 }

@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\Restarter.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\StaticMethods.cs" />
      <Compile Include="Assets\Scripts\EditModeScript.cs" />
      <Compile Include="Assets\Scripts\FollowObject.cs" />
      <Compile Include="Assets\Scripts\LookAtMouse.cs" />
@@ -67,6 +68,7 @@
      <Compile Include="Assets\Scripts\Mechanics\Destroyer.cs" />
      <Compile Include="Assets\Scripts\Mechanics\HardRepulsor.cs" />
      <Compile Include="Assets\Scripts\Mechanics\ObjectPuller.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\SoftRepulsor.cs" />
      <Compile Include="Assets\Scripts\Mechanics\Teleporter.cs" />
      <Compile Include="Assets\Scripts\Mechanics\ZeroGravity.cs" />
      <Compile Include="Assets\Scripts\MomentumContainer.cs" />
