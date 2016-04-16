@@ -3,8 +3,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{16EDFE6F-7AAA-B52D-FB94-630230AA9497}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -33,59 +34,60 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\ButtonOnClick.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\DontDestroy.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\Pause.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\PlayMusic.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\QuitApplication.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
-    <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
-    <Compile Include="Assets\Scripts\AutoSpin.cs" />
-    <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
-    <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
-    <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
-    <Compile Include="Assets\Scripts\Base_Systems\PauseResourceController.cs" />
-    <Compile Include="Assets\Scripts\Base_Systems\Restarter.cs" />
-    <Compile Include="Assets\Scripts\Base_Systems\StaticMethods.cs" />
-    <Compile Include="Assets\Scripts\EditModeScript.cs" />
-    <Compile Include="Assets\Scripts\FollowObject.cs" />
-    <Compile Include="Assets\Scripts\LookAtMouse.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\BlackHole.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\BlowPad.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\Destroyer.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\HardRepulsor.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\ObjectPuller.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\SoftRepulsor.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\Teleporter.cs" />
-    <Compile Include="Assets\Scripts\Mechanics\ZeroGravity.cs" />
-    <Compile Include="Assets\Scripts\MomentumContainer.cs" />
-    <Compile Include="Assets\Scripts\MomentumTransferController.cs" />
-    <Compile Include="Assets\Scripts\MyTime.cs" />
-    <Compile Include="Assets\Scripts\OrbitalsScript.cs" />
-    <Compile Include="Assets\Scripts\ScaleToObject.cs" />
-    <Compile Include="Assets\Scripts\ShowHubby.cs" />
-    <Compile Include="Assets\Scripts\Tutorial.cs" />
-    <None Include="Assets\Scenes\GameJamTemplateReadMe.txt" />
-    <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\ButtonOnClick.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\Pause.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\PlayMusic.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\QuitApplication.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
+     <Compile Include="Assets\Scripts\AutoSpin.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\PauseConnector.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\PauseResourceController.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\Restarter.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\StaticMethods.cs" />
+     <Compile Include="Assets\Scripts\EditModeScript.cs" />
+     <Compile Include="Assets\Scripts\FollowObject.cs" />
+     <Compile Include="Assets\Scripts\LookAtMouse.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\BlackHole.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\BlowPad.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\Destroyer.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\HardRepulsor.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\ObjectPuller.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\SoftRepulsor.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\Teleporter.cs" />
+     <Compile Include="Assets\Scripts\Mechanics\ZeroGravity.cs" />
+     <Compile Include="Assets\Scripts\MomentumContainer.cs" />
+     <Compile Include="Assets\Scripts\MomentumTransferController.cs" />
+     <Compile Include="Assets\Scripts\MyTime.cs" />
+     <Compile Include="Assets\Scripts\OrbitalsScript.cs" />
+     <Compile Include="Assets\Scripts\ScaleToObject.cs" />
+     <Compile Include="Assets\Scripts\ShowHubby.cs" />
+     <Compile Include="Assets\Scripts\Tutorial.cs" />
+     <None Include="Assets\Scenes\GameJamTemplateReadMe.txt" />
+     <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -95,4 +97,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>
