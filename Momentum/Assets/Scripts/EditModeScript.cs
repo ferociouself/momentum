@@ -21,6 +21,8 @@ public class EditModeScript : MonoBehaviour {
     private float transitionTimer = 0.0f;
     private EditModeState editModeState; // Current status of edit mode
 
+	private PauseResourceController pauseCont;
+
 	private int pauseCount = 0;
 	private bool resourceDrain = false;
 	private float pauseResource = 50.0f;
@@ -37,6 +39,7 @@ public class EditModeScript : MonoBehaviour {
             editModeState = EditModeState.Inactive;
             Time.timeScale = 1;
         }
+		pauseCont = gameObject.GetComponent<PauseResourceController>();
 	}
 
     /// <summary>
@@ -49,18 +52,13 @@ public class EditModeScript : MonoBehaviour {
             // Switch away from edit mode if current mode is active or entering.
             // Don't allow going into edit mode if resource < 10
             //
-            if (pauseResource > 10.0f || editModeState == EditModeState.Active || editModeState == EditModeState.Entering)
+			if (pauseCont.getPauseResource() > 10.0f || editModeState == EditModeState.Active || editModeState == EditModeState.Entering)
             {
                 ToggleEditMode();
             }
         }
-		if (resourceDrain) {
-			pauseResource = Mathf.Max(pauseResource - 0.05f, 0.0f);
-		} else {
-			pauseResource = Mathf.Min(pauseResource + 0.05f, 50.0f);
-		}
 		//Debug.Log(pauseResource + " " + pauseCount);
-		if (pauseResource == 0.0f) {
+		if (pauseCont.getPauseResource() == 0.0f) {
 			BeginEditModeTransition(false);
 		}
         UpdateTransitions();
@@ -115,7 +113,7 @@ public class EditModeScript : MonoBehaviour {
     /// </summary>
     void BeginEditModeTransition(bool toEdit)
     {
-		resourceDrain = toEdit;
+		pauseCont.setResourceDrain(toEdit);
         // Smooth switching when in transition state.
         if (transitionTimer > 0)
         {
@@ -126,8 +124,7 @@ public class EditModeScript : MonoBehaviour {
             transitionTimer = 0;
         }
 		if (toEdit) {
-			pauseCount++;
-			pauseResource -= 5.0f;
+			pauseCont.Paused();
 		}
         editModeState = (toEdit ? EditModeState.Entering : EditModeState.Exiting);
     }
