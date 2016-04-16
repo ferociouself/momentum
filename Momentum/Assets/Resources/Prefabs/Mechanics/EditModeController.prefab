@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11451914}
   - 114: {fileID: 11492082}
   - 114: {fileID: 11467946}
+  - 114: {fileID: 11496654}
   m_Layer: 0
   m_Name: EditModeController
   m_TagString: EditModeController
@@ -88,6 +89,17 @@ MonoBehaviour:
   allowTransfersInEditMode: 0
   allowMomentumToSelfTransfer: 0
   unpauseOnTransfer: 1
+--- !u!114 &11496654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f0379da4233467297f662046a147ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
