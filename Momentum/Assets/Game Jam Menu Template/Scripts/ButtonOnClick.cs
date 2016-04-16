@@ -32,7 +32,7 @@ public class ButtonOnClick : MonoBehaviour {
 
     public void onClick(int scene)
     {
-        startoptions.sceneToStart = scene + (currworld-1)*5 +1;
+        startoptions.sceneToStart = scene + (currworld-1)*5;
         startoptions.StartButtonClicked();
         showPanels.HideWorldsPanel();
 
