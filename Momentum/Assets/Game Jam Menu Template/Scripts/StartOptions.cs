@@ -80,6 +80,7 @@ public class StartOptions : MonoBehaviour {
         inMainMenu = true;
         showPanels.HidePausePanel();
         showPanels.ShowMenu();
+        SceneManager.LoadScene(0);
 
     }
 
