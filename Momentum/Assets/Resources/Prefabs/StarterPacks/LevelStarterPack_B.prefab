@@ -177,6 +177,7 @@ GameObject:
   - 114: {fileID: 11458628}
   - 114: {fileID: 11477766}
   - 114: {fileID: 11460218}
+  - 114: {fileID: 11441638}
   m_Layer: 0
   m_Name: EditModeController
   m_TagString: EditModeController
@@ -504,6 +505,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11441638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f0379da4233467297f662046a147ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11448554
 MonoBehaviour:
   m_ObjectHideFlags: 1
