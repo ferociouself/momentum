@@ -37,6 +37,15 @@ public class StartOptions : MonoBehaviour {
         Time.timeScale = 1;
 	}
 
+    public void onClick()
+    {
+        Invoke("HideDelayed", fadeColorAnimationClip.length * .5f);
+        Debug.Log("inchange");
+
+        //Set the trigger of Animator animColorFade to start transition to the FadeToOpaque state.
+        animColorFade.SetTrigger("fade");
+        Invoke("ShowDelayed", fadeColorAnimationClip.length * .5f);
+    }
 	public void StartButtonClicked()
 	{
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic, using length of fadeColorAnimationClip as time. 
@@ -91,6 +100,10 @@ public class StartOptions : MonoBehaviour {
 		SceneManager.LoadScene (sceneToStart);
 	}
 
+    public void ShowDelayed()
+    {
+        showPanels.ShowWorldsPanel();
+    }
 	public void HideDelayed()
 	{
 		//Hide the main menu UI element after fading out menu for start game in scene
