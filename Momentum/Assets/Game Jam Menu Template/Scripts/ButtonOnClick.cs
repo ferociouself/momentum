@@ -37,7 +37,7 @@ public class ButtonOnClick : MonoBehaviour {
         for (int i = 0; i < 5; i ++)
         {
             Debug.Log(i + ((currworld - 1) * 5));
-            myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
+            //myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
         }
 
         if (Input.GetKeyUp("left"))
