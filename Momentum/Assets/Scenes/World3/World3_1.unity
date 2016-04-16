@@ -217,6 +217,14 @@ Prefab:
       propertyPath: m_Name
       value: GravityWarper
       objectReference: {fileID: 0}
+    - target: {fileID: 5856066, guid: 44cd2c53532528f4c908bbca5a4a18f2, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882042, guid: 44cd2c53532528f4c908bbca5a4a18f2, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44cd2c53532528f4c908bbca5a4a18f2, type: 2}
   m_IsPrefabParent: 0
