@@ -11,6 +11,9 @@ public class ButtonOnClick : MonoBehaviour {
     public Text worldtext;
     public Image[] myImages;
 
+    private StartOptions startoptions;
+    private ShowPanels showPanels;
+
     // Use this for initialization
     void Start () {
         mySprites = (Sprite[])Resources.LoadAll<Sprite>("worldsprites");
@@ -28,16 +31,19 @@ public class ButtonOnClick : MonoBehaviour {
 
     public void onClick(int scene)
     {
-        //SceneManager.LoadScene(scene);
+        startoptions.sceneToStart = scene;
+        startoptions.StartButtonClicked();
+
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         worldtext.text = "World " + currworld;
         for (int i = 0; i < 5; i ++)
         {
             Debug.Log(i + ((currworld - 1) * 5));
-            myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
+          //  myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
         }
 
         if (Input.GetKeyUp("left"))
