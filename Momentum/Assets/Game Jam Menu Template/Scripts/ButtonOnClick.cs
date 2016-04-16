@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ButtonOnClick : MonoBehaviour {
     int sceneToEnable = 0;
     public GameObject UI;
-    public Sprite[] mySprites;
+    private Sprite[] mySprites;
     public int currworld;
     public Text worldtext;
     public Image[] myImages;
@@ -17,13 +17,14 @@ public class ButtonOnClick : MonoBehaviour {
     // Use this for initialization
     void Start () {
         mySprites = (Sprite[])Resources.LoadAll<Sprite>("worldsprites");
-        currworld = 1;
-        worldtext = GameObject.Find("TitleText").GetComponent<Text>();
-        myImages = new Image[5];
+        showPanels = GetComponent<ShowPanels>();
+        startoptions = GetComponent<StartOptions>();
+        //worldtext = GameObject.Find("WorldSelectTitle").GetComponent<Text>();
+        /* myImages = new Image[5];
         for (int i = 0; i < 5; i++)
         {
-            myImages[i] = GameObject.Find("world" + (currworld+ i)).GetComponentInChildren<Image>();
-        }
+            myImages[i] = GameObject.Find("world" + (1+i)).GetComponent<Image>();
+        } */
 
 
 
@@ -31,8 +32,9 @@ public class ButtonOnClick : MonoBehaviour {
 
     public void onClick(int scene)
     {
-        startoptions.sceneToStart = scene;
+        startoptions.sceneToStart = scene + (currworld-1)*5 +1;
         startoptions.StartButtonClicked();
+        showPanels.HideWorldsPanel();
 
 
     }
@@ -42,8 +44,9 @@ public class ButtonOnClick : MonoBehaviour {
         worldtext.text = "World " + currworld;
         for (int i = 0; i < 5; i ++)
         {
-            Debug.Log(i + ((currworld - 1) * 5));
-            //myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
+           // Debug.Log(i + ((currworld - 1) * 5));
+            //Debug.Log(myImages[i]);
+            myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
         }
 
         if (Input.GetKeyUp("left"))
