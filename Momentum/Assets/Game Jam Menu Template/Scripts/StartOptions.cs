@@ -75,6 +75,14 @@ public class StartOptions : MonoBehaviour {
 
 	}
 
+    public void returnMainMenu()
+    {
+        inMainMenu = true;
+        showPanels.HidePausePanel();
+        showPanels.ShowMenu();
+
+    }
+
 	//Once the level has loaded, check if we want to call PlayLevelMusic
 	void OnLevelWasLoaded()
 	{
