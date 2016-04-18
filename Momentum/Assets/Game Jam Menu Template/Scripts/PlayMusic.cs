@@ -13,7 +13,7 @@ public class PlayMusic : MonoBehaviour {
 
 
 	private AudioSource musicSource;				//Reference to the AudioSource which plays music
-	private float resetTime = .01f;					//Very short time used to fade in near instantly without a click
+	private float resetTime = 3.05f;					//Very short time used to fade in near instantly without a click
 
 
 	void Awake () 
