@@ -958,7 +958,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Select a momentum source!
+  m_Text: 'See how the pause resource bar (bottom) gets used up when you and as you
+    are paused...
+
+
+    Select a momentum source!'
 --- !u!222 &1147646319
 CanvasRenderer:
   m_ObjectHideFlags: 0
