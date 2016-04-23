@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Base_Systems\Goal.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\GoalController.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\ObjectColor.cs" />
+     <Compile Include="Assets\Scripts\Base_Systems\PauseColorController.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\PauseConnector.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\PauseResourceController.cs" />
      <Compile Include="Assets\Scripts\Base_Systems\Restarter.cs" />
