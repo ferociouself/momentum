@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6139274}
   - 114: {fileID: 11489788}
   m_Layer: 0
-  m_Name: AntiGravtyField
+  m_Name: AntiGravtyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
