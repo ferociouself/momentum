@@ -24,9 +24,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World2/World2_1.unity
   - enabled: 1
-    path: Assets/Scenes/World3/World3_2.unity
+    path: Assets/Scenes/World2/World2_2.unity
   - enabled: 1
     path: Assets/Scenes/World2/World2_3.unity
+  - enabled: 1
+    path: Assets/Scenes/World3/World3_2.unity
   - enabled: 1
     path: Assets/Scenes/World3/World3_3.unity
   - enabled: 1
