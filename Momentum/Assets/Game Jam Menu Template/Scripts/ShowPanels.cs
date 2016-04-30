@@ -9,6 +9,7 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel 
     public GameObject worldsPanel;
     public GameObject menuCamera;                                   //Store a reference to the UI canvas
+    public GameObject endGamePanel;
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel()
@@ -16,6 +17,23 @@ public class ShowPanels : MonoBehaviour {
 		optionsPanel.SetActive(true);
 		optionsTint.SetActive(true);
 	}
+
+    public void showEndGamePanel()
+    {
+        endGamePanel.SetActive(true);
+        optionsTint.SetActive(true);
+    }
+
+    public void HideEndGamePanel()
+    {
+        endGamePanel.SetActive(false);
+        optionsTint.SetActive(false);
+    }
+
+    public bool endGameIsActive()
+    {
+        return endGamePanel.activeSelf;
+    }
 
 	//Call this function to deactivate and hide the Options panel during the main menu
 	public void HideOptionsPanel()
