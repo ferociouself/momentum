@@ -248,6 +248,10 @@ Prefab:
       propertyPath: pushModifier
       value: 2500
       objectReference: {fileID: 0}
+    - target: {fileID: 19887392, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
   m_IsPrefabParent: 0
@@ -359,6 +363,10 @@ Prefab:
     - target: {fileID: 11493366, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
       propertyPath: pushModifier
       value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 19887392, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
@@ -526,6 +534,10 @@ Prefab:
       propertyPath: pushModifier
       value: 2500
       objectReference: {fileID: 0}
+    - target: {fileID: 19887392, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
   m_IsPrefabParent: 0
@@ -579,6 +591,10 @@ Prefab:
     - target: {fileID: 11493366, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
       propertyPath: pushModifier
       value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 19887392, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6d3043e3778f4d9fa7eb85c5d0c70fd, type: 2}
