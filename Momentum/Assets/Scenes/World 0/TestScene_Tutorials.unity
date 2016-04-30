@@ -629,6 +629,7 @@ GameObject:
   - 224: {fileID: 660455531}
   - 222: {fileID: 660455533}
   - 114: {fileID: 660455532}
+  - 114: {fileID: 660455534}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -686,6 +687,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 660455530}
+--- !u!114 &660455534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660455530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e4c2b159ea34a5ba20120b530011dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &814838558
 Prefab:
   m_ObjectHideFlags: 0
@@ -958,11 +970,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'See how the pause resource bar (bottom) gets used up when you and as you
-    are paused...
+  m_Text: 'Select a momentum source.
 
 
-    Select a momentum source!'
+
+
+    Be quick - pausing will drain your resource bar!'
 --- !u!222 &1147646319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1262,6 +1275,10 @@ Prefab:
     - target: {fileID: 476498, guid: 1f8707de761c74f19a585a2d8e543ba1, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478118, guid: 1f8707de761c74f19a585a2d8e543ba1, type: 2}
+      propertyPath: pullStrength
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f8707de761c74f19a585a2d8e543ba1, type: 2}

@@ -9,7 +9,7 @@ public class ButtonOnClick : MonoBehaviour {
     private Sprite[] mySprites;
     public int currworld;
     public Text worldtext;
-    public Image[] myImages;
+    public static Image[] myImages;
 
     private StartOptions startoptions;
     private ShowPanels showPanels;
