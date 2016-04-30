@@ -159,7 +159,7 @@ GameObject:
   - 212: {fileID: 21291614}
   - 61: {fileID: 6173634}
   m_Layer: 0
-  m_Name: Platform (Vertical) (2)
+  m_Name: Platform_Vertical_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,6 +243,7 @@ GameObject:
   - 224: {fileID: 22452344}
   - 222: {fileID: 22228496}
   - 114: {fileID: 11404606}
+  - 114: {fileID: 11458592}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -718,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7130831, b: 0.09558821, a: 1}
+  m_Color: {r: 0, g: 0.7352941, b: 0.21805272, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -859,6 +860,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1f0379da4233467297f662046a147ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11458592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e4c2b159ea34a5ba20120b530011dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11470838
