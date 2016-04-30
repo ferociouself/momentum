@@ -111,7 +111,7 @@ public class EditModeScript : MonoBehaviour {
     /// <summary>
     /// Toggle edit mode
     /// </summary>
-    void BeginEditModeTransition(bool toEdit)
+    public void BeginEditModeTransition(bool toEdit)
     {
 		pauseCont.setResourceDrain(toEdit);
         // Smooth switching when in transition state.

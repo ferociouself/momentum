@@ -11,6 +11,7 @@ public class Restarter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonUp("Reset")) {
+			gameObject.GetComponent<EditModeScript>().BeginEditModeTransition(true);
 			UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
 		}
 		if (Input.GetButtonUp("Restart")) {
