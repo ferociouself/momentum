@@ -2,8 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-
-public class PauseConnector : MonoBehaviour {
+public class PauseColorController : MonoBehaviour {
 
 	private PauseResourceController pauseCont;
 	private float pausability;
@@ -15,6 +14,11 @@ public class PauseConnector : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		pausability = pauseCont.getPauseResource ();
-		gameObject.GetComponent<Slider> ().value = pausability;
+		Color c = colorFunc (pausability);
+		gameObject.GetComponent<Image>().color = c;
+	}
+	Color colorFunc(float pause){
+		float t = pause / 50.0f;
+		return Color.Lerp (Color.red, Color.green, t);
 	}
 }
