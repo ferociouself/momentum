@@ -13,9 +13,12 @@ public class ButtonOnClick : MonoBehaviour {
 
     private StartOptions startoptions;
     private ShowPanels showPanels;
+    private bool victory;
+
 
     // Use this for initialization
     void Start () {
+
         mySprites = (Sprite[])Resources.LoadAll<Sprite>("worldsprites");
         showPanels = GetComponent<ShowPanels>();
         startoptions = GetComponent<StartOptions>();
@@ -25,6 +28,7 @@ public class ButtonOnClick : MonoBehaviour {
         {
             myImages[i] = GameObject.Find("world" + (1+i)).GetComponent<Image>();
         } */
+        
 
 
 
