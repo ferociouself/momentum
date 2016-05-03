@@ -9,8 +9,11 @@ public class GoalController : MonoBehaviour {
 
 	public int GoalNum = 1;
 
+	GameObject editModeController;
+
 	// Use this for initialization
 	void Start () {
+		editModeController = GameObject.Find("EditModeController");
 		foreach (GameObject go in GameObject.FindGameObjectsWithTag("goal")) {
 			goals.Add(go);
 		}

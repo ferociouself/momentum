@@ -16,4 +16,16 @@ public class EndGameStats {
 	public static void updateHardestLevel() {
 
 	}
+
+	public static void addToTotalPause(int pauses) {
+		totalPauseCount += pauses;
+	}
+
+	public static void addToTotalPauseTime(long time) {
+		totalPauseTime += time;
+	}
+
+	public static void addToNumRestarts(int restarts) {
+		numRestarts += restarts;
+	}
 }
