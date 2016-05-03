@@ -344,14 +344,14 @@ Canvas:
   m_GameObject: {fileID: 750830797}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1968099417}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -232635187
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &750830801
@@ -405,7 +405,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 17}
+  m_AnchoredPosition: {x: 80, y: 15}
   m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870554739
@@ -757,6 +757,7 @@ GameObject:
   - 224: {fileID: 1422643343}
   - 222: {fileID: 1422643345}
   - 114: {fileID: 1422643344}
+  - 114: {fileID: 1422643346}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -814,6 +815,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1422643342}
+--- !u!114 &1422643346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422643342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e4c2b159ea34a5ba20120b530011dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1469633171
 Prefab:
   m_ObjectHideFlags: 0
@@ -911,8 +923,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1547035241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.3879561}
-  m_LocalScale: {x: 3.1000001, y: 3.1999998, z: 1.3879561}
+  m_LocalPosition: {x: 0, y: -0.3, z: 1.3879561}
+  m_LocalScale: {x: 3.1000001, y: 3.2489295, z: 1.3879561}
   m_Children:
   - {fileID: 1107256296}
   m_Father: {fileID: 1968099416}
@@ -1349,7 +1361,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2039070, guid: 2f35be9033b0b4b49be3e70536b00af4, type: 2}
       propertyPath: orthographic size
-      value: 23.454514
+      value: 24.92142
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f35be9033b0b4b49be3e70536b00af4, type: 2}
@@ -1357,4 +1369,9 @@ Prefab:
 --- !u!4 &1968099416 stripped
 Transform:
   m_PrefabParentObject: {fileID: 427064, guid: 2f35be9033b0b4b49be3e70536b00af4, type: 2}
+  m_PrefabInternal: {fileID: 1968099415}
+--- !u!20 &1968099417 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2039070, guid: 2f35be9033b0b4b49be3e70536b00af4,
+    type: 2}
   m_PrefabInternal: {fileID: 1968099415}
