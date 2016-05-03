@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class StartOptions : MonoBehaviour {
@@ -23,12 +24,13 @@ public class StartOptions : MonoBehaviour {
 	private PlayMusic playMusic;										//Reference to PlayMusic script
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
 	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
-
+    private GameObject ui;
 	
 	void Awake()
 	{
 		//Get a reference to ShowPanels attached to UI object
 		showPanels = GetComponent<ShowPanels> ();
+        ui = GameObject.Find("UI");
 
 		//Get a reference to PlayMusic attached to UI object
 		playMusic = GetComponent<PlayMusic> ();
@@ -79,8 +81,14 @@ public class StartOptions : MonoBehaviour {
     {
         inMainMenu = true;
         showPanels.HidePausePanel();
+        playMusic.FadeDown(0);
+
         showPanels.ShowMenu();
+         Destroy(ui);
+        
         SceneManager.LoadScene(0);
+        playMusic.FadeUp(1);
+
 
     }
 
