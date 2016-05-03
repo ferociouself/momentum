@@ -1398,7 +1398,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Congradulations! Click "r" at any time to restart a level
+  m_Text: Congratulations! Click "r" at any time to restart a level.
 --- !u!222 &1375506319
 CanvasRenderer:
   m_ObjectHideFlags: 0
