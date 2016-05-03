@@ -27,6 +27,7 @@ public class Tutorial : MonoBehaviour
         greenGoal = GameObject.Find("goalGreen");
         canvas = GameObject.Find("Canvas");
         textValue = canvas.GetComponentsInChildren<Text>();
+		Debug.Log (textValue.Length);
         EMS = GetComponent<EditModeScript>();
         foreach (Text txt in textValue)
         {
@@ -97,16 +98,14 @@ public class Tutorial : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && textValue[5].enabled == true && !used)
         {
             textValue[5].enabled = false;
-            // textValue[6].enabled = true;
+            textValue[6].enabled = true;
             used = true;
         }
-
-//        if (greenBall.transform.position == greenGoal.transform.position)
-//        {
-//            textValue[6].enabled = false;
-//            textValue[7].enabled = true;
-//            used = true;
-//        }
+		if (Input.GetMouseButtonUp(0) && (textValue[6].enabled) && !used) {
+			textValue[6].enabled = false;
+			//textValue[7].enabled = true;
+			used = true;
+		}
 
         used = false;
 
