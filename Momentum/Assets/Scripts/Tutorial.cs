@@ -103,7 +103,7 @@ public class Tutorial : MonoBehaviour
         }
 		if (Input.GetMouseButtonUp(0) && (textValue[6].enabled) && !used) {
 			textValue[6].enabled = false;
-			//textValue[7].enabled = true;
+			textValue[7].enabled = true;
 			used = true;
 		}
 
