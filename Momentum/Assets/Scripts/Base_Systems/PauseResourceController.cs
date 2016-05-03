@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class PauseResourceController : MonoBehaviour {
 
@@ -7,9 +8,11 @@ public class PauseResourceController : MonoBehaviour {
 	private bool resourceDrain = false;
 	private float pauseResource = 50.0f;
 
+	private Stopwatch stopwatch;
+
 	// Use this for initialization
 	void Start () {
-	
+		stopwatch = new Stopwatch();
 	}
 	
 	// Update is called once per frame
@@ -24,13 +27,25 @@ public class PauseResourceController : MonoBehaviour {
 	public void Paused() {
 		pauseCount++;
 		pauseResource -= 5.0f;
+		stopwatch.Start();
 	}
 
 	public void setResourceDrain(bool draining) {
 		resourceDrain = draining;
+		if (!resourceDrain) {
+			stopwatch.Stop();
+		}
 	}
 
 	public float getPauseResource() {
 		return pauseResource;
+	}
+
+	public int getPauseCount() {
+		return pauseCount;
+	}
+
+	public System.TimeSpan getPauseTime() {
+		return stopwatch.Elapsed;
 	}
 }

@@ -36,6 +36,13 @@ public class GoalController : MonoBehaviour {
 	}
 
 	void EndLevel() {
+		EndGameStats.addToTotalPauseTime(editModeController.GetComponent<PauseResourceController>().getPauseTime());
+		Debug.Log(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		EndGameStats.endLevel(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex 
+			== UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings) {
+			EndGameStats.finalLevel();
+		}
 		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }
