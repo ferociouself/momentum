@@ -1539,6 +1539,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 05c90da77b644b64eadd531e59566162,
         type: 3}
+    - target: {fileID: 21227838, guid: 6bf4d7555e4f04a208e72bfea8a7e345, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5b6bc45f14b441e8f281cac6f59f97,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6bf4d7555e4f04a208e72bfea8a7e345, type: 2}
   m_IsPrefabParent: 0
@@ -1896,8 +1901,8 @@ Transform:
   - {fileID: 1970563886}
   - {fileID: 142464374}
   - {fileID: 883044434}
-  - {fileID: 277737691}
   - {fileID: 768659222}
+  - {fileID: 277737691}
   m_Father: {fileID: 0}
   m_RootOrder: 16
 --- !u!1001 &1970028894

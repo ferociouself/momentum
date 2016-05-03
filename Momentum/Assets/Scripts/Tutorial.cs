@@ -67,35 +67,35 @@ public class Tutorial : MonoBehaviour
             timerDone = false;
         }
 
-        if (Input.GetButtonDown("Pause") && textValue[1].enabled == true && !used)
+		if (Input.GetButtonDown("Pause") && (textValue[1].enabled) && !used)
         {
             textValue[1].enabled = false;
             textValue[2].enabled = true;
             used = true;
         }
 
-        if (Input.GetButtonDown("Pause") && textValue[2].enabled == true && !used)
+		if (Input.GetButtonDown("Pause") && (textValue[2].enabled) && !used)
         {
             textValue[2].enabled = false;
             textValue[3].enabled = true;
             used = true;
         }
 
-        if (Input.GetMouseButtonUp(0) && textValue[3].enabled == true && !used)
+		if (Input.GetMouseButtonUp(0) && (textValue[3].enabled) && !used)
         {
             textValue[3].enabled = false;
             textValue[4].enabled = true;
             used = true;
         }
 
-        if (Input.GetMouseButtonUp(0) && textValue[4].enabled == true && !used)
+		if (Input.GetMouseButtonUp(0) && (textValue[4].enabled) && !used)
         {
             textValue[4].enabled = false;
             textValue[5].enabled = true;
             used = true;
         }
 
-        if (Input.GetMouseButtonUp(0) && textValue[5].enabled == true && !used)
+		if (Input.GetMouseButtonUp(0) && (textValue[5].enabled) && !used)
         {
             textValue[5].enabled = false;
             textValue[6].enabled = true;
