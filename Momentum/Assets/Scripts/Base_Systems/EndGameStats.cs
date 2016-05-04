@@ -33,7 +33,7 @@ public static class EndGameStats {
 		string nameEnd = nameSplit[1];
 		int num1 = int.Parse(nameBegin.Substring(nameBegin.Length - 1));
 		int num2 = int.Parse(nameEnd);
-		hardestLevelImage = ButtonOnClick.myImages[(5 * num1) + num2];
+		hardestLevelImage = (Sprite)Resources.Load<Sprite>("worldsprites/world" + num1 + "_" + num2);
 	}
 
 	public static void endLevel(string sceneName) {
