@@ -132,6 +132,7 @@ public class Goal : MonoBehaviour {
     /// <summary>
     /// Triggered when an object collides with the goal.
     /// </summary>
+    /// <param name="coll"></param>
 	void OnTriggerEnter2D(Collider2D coll) {
         if(selectedObjectRb != null) {
             return; // Goal is already filled.
@@ -154,28 +155,29 @@ public class Goal : MonoBehaviour {
     /// </summary>
     void EnterLockedObjectState() {
         currentState = GoalState.LockedObject; // Change State
-        BeginColorFade(); // Fade Color
-        BeginAnguilarRotationStopper(); // Stop Angular Momentum
+        BeginColorFade(fadeToColTime); // Fade Color
+        BeginAnguilarRotationStopper(angularSlowdownTime); // Stop Angular Momentum
         StartCoroutine(BeginTrippedTimer(tripDelay)); // Start timer to register tripped
     }
 
     /// <summary>
     /// Begin the fade to the goal's completion color.
     /// </summary>
-    void BeginColorFade() {
+    void BeginColorFade(float time) {
         if (fadeToColOnComplete)
         {
-            fadeToColTimer = fadeToColTime;
+            fadeToColTimer = time;
         }
     }
 
     /// <summary>
     /// Stop the angular rotation of the selected object.
     /// </summary>
-    void BeginAnguilarRotationStopper() {
+    void BeginAnguilarRotationStopper(float time) {
         if (selectedObjectRb != null)
         {
             initialAngularRotation = selectedObjectRb.angularVelocity;
+            angularSlowTimer = time;
         }
     }
 
