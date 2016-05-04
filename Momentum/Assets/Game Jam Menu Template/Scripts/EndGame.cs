@@ -23,7 +23,7 @@ public class EndGame : MonoBehaviour {
 	void Update () {
         if (!showPanels.endGameIsActive() && victory)
         {
-            GameTime.text = "Total Pause Time: " + EndGameStats.getTotalTime().Hours + ":" + EndGameStats.getTotalTime().Minutes + ":" + EndGameStats.getTotalTime().Seconds;
+            GameTime.text = "Total Game Time: " + EndGameStats.getTotalTime().Hours + ":" + EndGameStats.getTotalTime().Minutes + ":" + EndGameStats.getTotalTime().Seconds;
             PauseCount.text = "Total Pauses: " + EndGameStats.totalPauseCount.ToString();
             TotalRestarts.text = "Total Restarts: " + EndGameStats.numRestarts.ToString();
             HardestRestarts.text = "Max Restarts: " +  EndGameStats.maxRestarts.ToString();
