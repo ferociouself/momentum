@@ -42,7 +42,6 @@ public class StartOptions : MonoBehaviour {
     public void onClick()
     {
         Invoke("HideDelayed", fadeColorAnimationClip.length * .5f);
-        Debug.Log("inchange");
 
         //Set the trigger of Animator animColorFade to start transition to the FadeToOpaque state.
         animColorFade.SetTrigger("fade");
@@ -105,7 +104,7 @@ public class StartOptions : MonoBehaviour {
 
 	public void LoadDelayed()
 	{
-        Debug.Log("hi");
+        
 		//Pause button now works if escape is pressed since we are no longer in Main menu.
 		inMainMenu = false;
 
