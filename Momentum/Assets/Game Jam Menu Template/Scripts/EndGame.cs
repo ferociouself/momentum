@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class EndGame : MonoBehaviour {
     private ShowPanels showPanels;
-    private bool victory;
+    public static bool victory;
     public Text GameTime;
     public Text PauseCount;
     public Text TotalRestarts;
     public Text HardestRestarts;
-    public Image HardestLevel;
+    public Sprite HardestLevel;
+   
 
     // Use this for initialization
     void Start () {
@@ -19,13 +21,13 @@ public class NewBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (victory && !showPanels.endGameIsActive())
+        if (!showPanels.endGameIsActive() && victory)
         {
             GameTime.text = "Total Game Time: " + (EndGameStats.endTime - EndGameStats.initTime).ToString("0.00");
             PauseCount.text = EndGameStats.totalPauseCount.ToString();
             TotalRestarts.text = EndGameStats.numRestarts.ToString();
             HardestRestarts.text = EndGameStats.maxRestarts.ToString();
-            HardestLevel = HardestLevel; //Jackson plz
+            HardestLevel = EndGameStats.hardestLevelImage; //Jackson plz
             showPanels.showEndGamePanel();
         }
 	
