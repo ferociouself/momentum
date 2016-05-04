@@ -80,10 +80,12 @@ public class StartOptions : MonoBehaviour {
     {
         inMainMenu = true;
         showPanels.HidePausePanel();
+        showPanels.HideCreditsPanel();
+        showPanels.HideEndGamePanel();
         playMusic.FadeDown(0);
 
         showPanels.ShowMenu();
-         Destroy(ui);
+        Destroy(ui);
         
         SceneManager.LoadScene(0);
         playMusic.FadeUp(1);

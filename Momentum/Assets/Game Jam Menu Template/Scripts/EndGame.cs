@@ -10,7 +10,7 @@ public class EndGame : MonoBehaviour {
     public Text PauseCount;
     public Text TotalRestarts;
     public Text HardestRestarts;
-    public Sprite HardestLevel;
+    public Image HardestLevel;
    
 
     // Use this for initialization
@@ -23,12 +23,13 @@ public class EndGame : MonoBehaviour {
 	void Update () {
         if (!showPanels.endGameIsActive() && victory)
         {
-            GameTime.text = "Total Game Time: " + (EndGameStats.endTime - EndGameStats.initTime).ToString("0.00");
-            PauseCount.text = EndGameStats.totalPauseCount.ToString();
-            TotalRestarts.text = EndGameStats.numRestarts.ToString();
-            HardestRestarts.text = EndGameStats.maxRestarts.ToString();
-            HardestLevel = EndGameStats.hardestLevelImage; //Jackson plz
+            GameTime.text = "Total Pause Time: " + EndGameStats.getTotalTime().Hours + ":" + EndGameStats.getTotalTime().Minutes + ":" + EndGameStats.getTotalTime().Seconds;
+            PauseCount.text = "Total Pauses: " + EndGameStats.totalPauseCount.ToString();
+            TotalRestarts.text = "Total Restarts: " + EndGameStats.numRestarts.ToString();
+            HardestRestarts.text = "Max Restarts: " +  EndGameStats.maxRestarts.ToString();
+            HardestLevel.sprite = EndGameStats.hardestLevelImage; //Jackson plz
             showPanels.showEndGamePanel();
+            victory = false;
         }
 	
 	}
