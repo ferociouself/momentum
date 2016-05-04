@@ -25,6 +25,9 @@ public class GoalController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1) {
+			EndGameStats.beginGame();
+		}
 		for (int i = 0; i < goals.Count; i++) {
 			if (goals[i].GetComponent<Goal>().getActive()) {
 				goalsActivated[i] = true;
