@@ -16,7 +16,7 @@ public static class EndGameStats {
 	public static int curNumRestarts = 0;
 
 	public static string hardestLevel = "";
-	public static Image hardestLevelImage = null;
+	public static Sprite hardestLevelImage = null;
 	public static int maxRestarts = -1;
 
 	public static void beginGame() {
