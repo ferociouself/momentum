@@ -21,13 +21,13 @@ public class Goal : MonoBehaviour {
 
     public float finalAngularRotation = 0.0f; // Final angular rotation of the balls.
     public float angularSlowdownTime = 1.0f; // Seconds. How long it takes to slow down the ball's rotation.
-    private float initialAngularRotation; // Used to store the anguilar rotation when the ball first collides with the goal.
+    private float initialAngularRotation = 0.0f; // Used to store the anguilar rotation when the ball first collides with the goal.
     private float angularSlowTimer = -1.0f; // Current time on slowing down ball.
+    private bool rotationLocked = false; // Rotation should be fixed.
 
     private float pullStrengthMagnifier = 1000.0f;
     private GoalState currentState = GoalState.NoObject;
     private bool selectedBallStopped = false;
-    
 
 	GameObject selectedObject;
 	Rigidbody2D selectedObjectRb;
@@ -89,19 +89,28 @@ public class Goal : MonoBehaviour {
     /// Update the gradual slowdown of the selected objects angular velocity.
     /// </summary>
     void UpdateAngularVelocitySlowdown() {
-        if (angularSlowTimer > 0 && selectedObjectRb != null)
+        if (selectedObjectRb != null)
         {
-            float lerpTime = (angularSlowdownTime - angularSlowTimer) / angularSlowdownTime;
-            float newAngularVel = Mathf.Lerp(initialAngularRotation, finalAngularRotation, lerpTime);
 
-            angularSlowTimer -= Time.deltaTime;
-            if (angularSlowTimer <= 0)
-            {
-                angularSlowTimer = -1.0f;
-                newAngularVel = finalAngularRotation;
+            if(rotationLocked && selectedObjectRb.angularVelocity != finalAngularRotation) {
+                selectedObjectRb.angularVelocity = finalAngularRotation;
             }
 
-            selectedObjectRb.angularVelocity = newAngularVel;
+            if (angularSlowTimer > 0)
+            {
+                float lerpTime = (angularSlowdownTime - angularSlowTimer) / angularSlowdownTime;
+                float newAngularVel = Mathf.Lerp(initialAngularRotation, finalAngularRotation, lerpTime);
+
+                angularSlowTimer -= Time.deltaTime;
+                if (angularSlowTimer <= 0)
+                {
+                    angularSlowTimer = -1.0f;
+                    newAngularVel = finalAngularRotation;
+                    rotationLocked = true;
+                }
+
+                selectedObjectRb.angularVelocity = newAngularVel;
+            }
         }
     }
 
@@ -156,7 +165,7 @@ public class Goal : MonoBehaviour {
     void EnterLockedObjectState() {
         currentState = GoalState.LockedObject; // Change State
         BeginColorFade(fadeToColTime); // Fade Color
-        BeginAnguilarRotationStopper(angularSlowdownTime); // Stop Angular Momentum
+        BeginAngularRotationStopper(angularSlowdownTime); // Stop Angular Momentum
         StartCoroutine(BeginTrippedTimer(tripDelay)); // Start timer to register tripped
     }
 
@@ -173,7 +182,7 @@ public class Goal : MonoBehaviour {
     /// <summary>
     /// Stop the angular rotation of the selected object.
     /// </summary>
-    void BeginAnguilarRotationStopper(float time) {
+    void BeginAngularRotationStopper(float time) {
         if (selectedObjectRb != null)
         {
             initialAngularRotation = selectedObjectRb.angularVelocity;
