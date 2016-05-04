@@ -84,6 +84,8 @@ public class StartOptions : MonoBehaviour {
         showPanels.HideEndGamePanel();
         playMusic.FadeDown(0);
 
+        EndGameStats.Reset();
+
         showPanels.ShowMenu();
         Destroy(ui);
         

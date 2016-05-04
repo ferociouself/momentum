@@ -11,6 +11,8 @@ public class GoalController : MonoBehaviour {
 
 	GameObject editModeController;
 
+    bool levelOver = false;
+
 	// Use this for initialization
 	void Start () {
 		editModeController = GameObject.Find("EditModeController");
@@ -25,7 +27,7 @@ public class GoalController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1) {
+		if (!EndGameStats.gameBegun) {
 			EndGameStats.beginGame();
 		}
 		for (int i = 0; i < goals.Count; i++) {
@@ -33,18 +35,24 @@ public class GoalController : MonoBehaviour {
 				goalsActivated[i] = true;
 			}
 		}
-		if (!goalsActivated.Contains(false)) {
+		if (!goalsActivated.Contains(false) && !levelOver) {
+            levelOver = true;
 			EndLevel();
 		}
 	}
 
 	void EndLevel() {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+            return;
+        }
 		EndGameStats.addToTotalPause(editModeController.GetComponent<PauseResourceController>().getPauseCount());
 		EndGameStats.addToTotalPauseTime(editModeController.GetComponent<PauseResourceController>().getPauseTime());
 		Debug.Log(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 		EndGameStats.endLevel(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex 
-			== 1 /*UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings*/) {
+			== 2 /*UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings*/) {
 			EndGame.victory = true;
 			EndGameStats.finalLevel();
 		}

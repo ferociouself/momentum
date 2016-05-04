@@ -19,8 +19,11 @@ public static class EndGameStats {
 	public static Sprite hardestLevelImage = null;
 	public static int maxRestarts = -1;
 
+    public static bool gameBegun = false;
+
 	public static void beginGame() {
 		stopwatch.Start();
+        gameBegun = true;
 	}
 
 	public static void updateHardestLevel(string sceneName) {
@@ -37,7 +40,11 @@ public static class EndGameStats {
 	}
 
 	public static void endLevel(string sceneName) {
+        UnityEngine.Debug.Log(numRestarts);
+        UnityEngine.Debug.Log(curNumRestarts);
 		numRestarts += curNumRestarts;
+        UnityEngine.Debug.Log(numRestarts);
+        UnityEngine.Debug.Log(curNumRestarts);
 		UnityEngine.Debug.Log("curNumRestarts: " + curNumRestarts);
 		UnityEngine.Debug.Log("numRestarts: " + numRestarts);
 		UnityEngine.Debug.Log("totalPauseCount: " + totalPauseCount);
@@ -68,4 +75,16 @@ public static class EndGameStats {
 	public static TimeSpan getTotalTime() {
 		return stopwatch.Elapsed;
 	}
+
+    public static void Reset()
+    {
+        totalPauseCount = 0;
+        totalPauseTime = 0.0;
+        stopwatch.Reset();
+        numRestarts = 0;
+        hardestLevel = "";
+        hardestLevelImage = null;
+        maxRestarts = -1;
+        curNumRestarts = 0;
+    }
 }
