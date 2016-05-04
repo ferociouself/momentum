@@ -46,7 +46,7 @@ public class ButtonOnClick : MonoBehaviour {
         {
             currworld--;
             if (currworld < 1)
-                currworld = 3;
+                currworld = 5;
             
         
            
@@ -54,7 +54,7 @@ public class ButtonOnClick : MonoBehaviour {
         if (Input.GetKeyUp("right"))
         {
             currworld++;
-            if (currworld > 3)
+            if (currworld > 5)
                 currworld = 1;
 
         }
