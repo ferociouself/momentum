@@ -20,17 +20,8 @@ public class ButtonOnClick : MonoBehaviour {
     void Start () {
 
         mySprites = (Sprite[])Resources.LoadAll<Sprite>("worldsprites");
-        Debug.Log(mySprites.Length);
         showPanels = GetComponent<ShowPanels>();
         startoptions = GetComponent<StartOptions>();
-        //worldtext = GameObject.Find("WorldSelectTitle").GetComponent<Text>();
-        /* myImages = new Image[5];
-        for (int i = 0; i < 5; i++)
-        {
-            myImages[i] = GameObject.Find("world" + (1+i)).GetComponent<Image>();
-        } */
-        
-
 
 
     }
@@ -48,27 +39,22 @@ public class ButtonOnClick : MonoBehaviour {
     void Update () {
         worldtext.text = "World " + currworld;
         for (int i = 0; i < 5; i ++)
-        {
-            // Debug.Log(currworld);
-            //Debug.Log(myImages[i]);
-            Debug.Log(mySprites.Length);
             myImages[i].sprite = mySprites[i + ((currworld-1)*5)];
-           
-        }
+          
 
         if (Input.GetKeyUp("left"))
         {
             currworld--;
             if (currworld < 1)
-                currworld = 2;
-            Debug.Log(currworld);
-
+                currworld = 3;
+            
+        
            
         }
         if (Input.GetKeyUp("right"))
         {
             currworld++;
-            if (currworld > 2)
+            if (currworld > 3)
                 currworld = 1;
 
         }
