@@ -36,6 +36,7 @@ public class GoalController : MonoBehaviour {
 	}
 
 	void EndLevel() {
+		EndGameStats.addToTotalPause(editModeController.GetComponent<PauseResourceController>().getPauseCount());
 		EndGameStats.addToTotalPauseTime(editModeController.GetComponent<PauseResourceController>().getPauseTime());
 		Debug.Log(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 		EndGameStats.endLevel(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
