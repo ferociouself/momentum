@@ -41,7 +41,7 @@ public class GoalController : MonoBehaviour {
 		Debug.Log(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 		EndGameStats.endLevel(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex 
-			== UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings) {
+			== 1 /*UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings*/) {
 			EndGame.victory = true;
 			EndGameStats.finalLevel();
 		}

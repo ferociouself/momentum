@@ -10,9 +10,22 @@ public class ShowPanels : MonoBehaviour {
     public GameObject worldsPanel;
     public GameObject menuCamera;                                   //Store a reference to the UI canvas
     public GameObject endGamePanel;
+    public GameObject creditsPanel;
 
-	//Call this function to activate and display the Options panel during the main menu
-	public void ShowOptionsPanel()
+    //Call this function to activate and display the Options panel during the main menu
+    public void showCreditsPanel()
+    {
+        creditsPanel.SetActive(true);
+        HideEndGamePanel();
+        optionsTint.SetActive(true);
+    }
+
+    public void HideCreditsPanel()
+    {
+        creditsPanel.SetActive(false);
+        optionsTint.SetActive(false);
+    }
+    public void ShowOptionsPanel()
 	{
 		optionsPanel.SetActive(true);
 		optionsTint.SetActive(true);
