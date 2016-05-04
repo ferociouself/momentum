@@ -40,3 +40,7 @@ ehthumbs.db
 
 *.userprefs
 Momentum/ProjectSettings/TimeManager.asset
+
+Momentum/Assets/Resources/Sprites/Thumbs.db.meta
+
+Momentum/Assets/Resources/worldsprites/Thumbs.db.meta
